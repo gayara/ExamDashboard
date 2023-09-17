@@ -6,6 +6,7 @@ import '../assets/css/adminlte.min.css'
 function AdminLayout() {
   return (
     <div className="hold-transition sidebar-mini">
+        <AdminLayout/>
         <div className="wrapper">
         AdminLayout
         <div className="content-wrapper">
