@@ -39,8 +39,8 @@ function AdminSidebar() {
             data-accordion="false"
           >
             <li className="nav-item has-treeview">
-              <AdminSidebarTreeview submenu={[{title:'Admin',url:'/admin/dashboard'}]}/>
-              <AdminSidebarTreeview submenu={[{title:'Subjects',url:'/admin/subjectList'}]}/>
+              <AdminSidebarTreeview topic="Dashboard" submenu={[{title:'Admin',url:'/admin/dashboard'}]}/>
+              <AdminSidebarTreeview topic="Subject" submenu={[{title:'Subjects',url:'/admin/subjectList'}]}/>
               
               <AdminSidebarTreeview/>
               <ul className="nav nav-treeview">
