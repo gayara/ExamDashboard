@@ -1,4 +1,6 @@
 import React from "react";
+import AdminSidebarTreeview from "./AdminSidebarTreeview";
+
 
 function AdminSidebar() {
   return (
@@ -37,13 +39,9 @@ function AdminSidebar() {
             data-accordion="false"
           >
             <li className="nav-item has-treeview">
-              <a href="/" className="nav-link">
-                <i className="nav-icon fas fa-tachometer-alt"></i>
-                <p>
-                  Dashboard
-                  <i className="right fas fa-angle-left"></i>
-                </p>
-              </a>
+              <AdminSidebarTreeview/>
+              <AdminSidebarTreeview/>
+              <AdminSidebarTreeview/>
               <ul className="nav nav-treeview">
                 <li className="nav-item">
                   <a href="../../index.html" className="nav-link">
