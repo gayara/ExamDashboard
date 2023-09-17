@@ -39,7 +39,7 @@ function AdminSidebar() {
             data-accordion="false"
           >
             <li className="nav-item has-treeview">
-              <AdminSidebarTreeview/>
+              <AdminSidebarTreeview submenu={[{title:'sub menu 1',url:'/admin/user'}]}/>
               <AdminSidebarTreeview/>
               <AdminSidebarTreeview/>
               <ul className="nav nav-treeview">
