@@ -8,7 +8,10 @@ function AdminLayout() {
     <div className="hold-transition sidebar-mini">
         <div className="wrapper">
         AdminLayout
+        <div className="content-wrapper">
         <Outlet/>
+        </div>
+     
         <AdminFooter/>
         </div>
         
