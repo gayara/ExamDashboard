@@ -39,8 +39,9 @@ function AdminSidebar() {
             data-accordion="false"
           >
             <li className="nav-item has-treeview">
-              <AdminSidebarTreeview submenu={[{title:'sub menu 1',url:'/admin/user'}]}/>
-              <AdminSidebarTreeview/>
+              <AdminSidebarTreeview submenu={[{title:'Admin',url:'/admin/dashboard'}]}/>
+              <AdminSidebarTreeview submenu={[{title:'Subjects',url:'/admin/subjectList'}]}/>
+              
               <AdminSidebarTreeview/>
               <ul className="nav nav-treeview">
                 <li className="nav-item">
@@ -55,12 +56,7 @@ function AdminSidebar() {
                     <p>Dashboard v2</p>
                   </a>
                 </li>
-                <li className="nav-item">
-                  <a href="../../index3.html" className="nav-link">
-                    <i className="far fa-circle nav-icon"></i>
-                    <p>Dashboard v3</p>
-                  </a>
-                </li>
+                
               </ul>
             </li>
             <li className="nav-item">
@@ -94,12 +90,7 @@ function AdminSidebar() {
                     <p>Top Navigation + Sidebar</p>
                   </a>
                 </li>
-                <li className="nav-item">
-                  <a href="../layout/boxed.html" className="nav-link">
-                    <i className="far fa-circle nav-icon"></i>
-                    <p>Boxed</p>
-                  </a>
-                </li>
+               
                 <li className="nav-item">
                   <a href="../layout/fixed-sidebar.html" className="nav-link">
                     <i className="far fa-circle nav-icon"></i>
@@ -480,95 +471,14 @@ function AdminSidebar() {
                 </li>
               </ul>
             </li>
-            <li className="nav-header">MISCELLANEOUS</li>
-            <li className="nav-item">
-              <a href="https://adminlte.io/docs/3.0" className="nav-link">
-                <i className="nav-icon fas fa-file"></i>
-                <p>Documentation</p>
-              </a>
-            </li>
-            <li className="nav-header">MULTI LEVEL EXAMPLE</li>
-            <li className="nav-item">
-              <a href="/" className="nav-link">
-                <i className="fas fa-circle nav-icon"></i>
-                <p>Level 1</p>
-              </a>
-            </li>
-            <li className="nav-item has-treeview">
-              <a href="/" className="nav-link">
-                <i className="nav-icon fas fa-circle"></i>
-                <p>
-                  Level 1<i className="right fas fa-angle-left"></i>
-                </p>
-              </a>
-              <ul className="nav nav-treeview">
-                <li className="nav-item">
-                  <a href="/" className="nav-link">
-                    <i className="far fa-circle nav-icon"></i>
-                    <p>Level 2</p>
-                  </a>
-                </li>
-                <li className="nav-item has-treeview">
-                  <a href="/" className="nav-link">
-                    <i className="far fa-circle nav-icon"></i>
-                    <p>
-                      Level 2<i className="right fas fa-angle-left"></i>
-                    </p>
-                  </a>
-                  <ul className="nav nav-treeview">
-                    <li className="nav-item">
-                      <a href="/" className="nav-link">
-                        <i className="far fa-dot-circle nav-icon"></i>
-                        <p>Level 3</p>
-                      </a>
-                    </li>
-                    <li className="nav-item">
-                      <a href="/" className="nav-link">
-                        <i className="far fa-dot-circle nav-icon"></i>
-                        <p>Level 3</p>
-                      </a>
-                    </li>
-                    <li className="nav-item">
-                      <a href="/" className="nav-link">
-                        <i className="far fa-dot-circle nav-icon"></i>
-                        <p>Level 3</p>
-                      </a>
-                    </li>
-                  </ul>
-                </li>
-                <li className="nav-item">
-                  <a href="/" className="nav-link">
-                    <i className="far fa-circle nav-icon"></i>
-                    <p>Level 2</p>
-                  </a>
-                </li>
-              </ul>
-            </li>
-            <li className="nav-item">
-              <a href="/" className="nav-link">
-                <i className="fas fa-circle nav-icon"></i>
-                <p>Level 1</p>
-              </a>
-            </li>
-            <li className="nav-header">LABELS</li>
-            <li className="nav-item">
-              <a href="/" className="nav-link">
-                <i className="nav-icon far fa-circle text-danger"></i>
-                <p className="text">Important</p>
-              </a>
-            </li>
-            <li className="nav-item">
-              <a href="/" className="nav-link">
-                <i className="nav-icon far fa-circle text-warning"></i>
-                <p>Warning</p>
-              </a>
-            </li>
-            <li className="nav-item">
-              <a href="/" className="nav-link">
-                <i className="nav-icon far fa-circle text-info"></i>
-                <p>Informational</p>
-              </a>
-            </li>
+          
+            
+            
+            
+           
+            
+          
+           
           </ul>
         </nav>
       </div>

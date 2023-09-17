@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 
 function AdminSidebarTreeview({submenu}) {
 
-  const [isOpen, setOpen] = useState(false);
+   const [isOpen, setOpen] = useState(false);
 
   return (
     <li className={`nav-item has-treeview ${isOpen === true ? 'menu-open' : ''}`}>
