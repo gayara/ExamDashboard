@@ -1,9 +1,20 @@
-import logo from './logo.svg';
+
 import './App.css';
+import { Route, Routes } from 'react-router-dom';
+import AdminLayout from './layout/AdminLayout';
+import Dashboard from './pages/Dashboard';
 
 function App() {
   return (
-    <h1>hello</h1>
+    <>
+    <Routes>
+    <Route exact path={'/admin' } element ={<AdminLayout/>}>
+    <Route exact path={'dashboard' } element ={<Dashboard/>}></Route>
+    </Route>
+    
+    </Routes>
+    </>
+
   );
 }
 
