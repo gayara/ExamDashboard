@@ -11584,6 +11584,7 @@ body.sidebar-collapse:not(.sidebar-mini-md):not(.sidebar-mini) .main-header::bef
 
 .main-header {
   border-bottom: 1px solid #dee2e6;
+  
   z-index: 1034;
 }
 
@@ -11736,8 +11737,8 @@ body.sidebar-collapse:not(.sidebar-mini-md):not(.sidebar-mini) .main-header::bef
 
 .brand-link {
   display: block;
-  font-size: 1.25rem;
-  line-height: 1.5;
+  font-size: 2rem;
+  line-height: 1;
   padding: 0.8125rem 0.5rem;
   transition: width 0.3s ease-in-out;
   white-space: nowrap;
@@ -11768,7 +11769,7 @@ body.sidebar-collapse:not(.sidebar-mini-md):not(.sidebar-mini) .main-header::bef
   margin-left: .8rem;
   margin-right: .5rem;
   margin-top: -3px;
-  max-height: 33px;
+  max-height: 40px;
   width: auto;
 }
 
@@ -11823,7 +11824,7 @@ body.sidebar-collapse:not(.sidebar-mini-md):not(.sidebar-mini) .main-header::bef
   padding-bottom: 0;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
-  padding-top: 0;
+  padding-top: 2.5rem;
 }
 
 .user-panel {
@@ -11865,7 +11866,8 @@ body.sidebar-collapse:not(.sidebar-mini-md):not(.sidebar-mini) .main-header::bef
 }
 
 .nav-sidebar .nav-item > .nav-link {
-  margin-bottom: .2rem;
+  margin-bottom: 0.9rem;
+
 }
 
 .nav-sidebar .nav-item > .nav-link .right {
@@ -11932,6 +11934,7 @@ body.sidebar-collapse:not(.sidebar-mini-md):not(.sidebar-mini) .main-header::bef
   display: none;
   list-style: none;
   padding: 0;
+
 }
 
 .nav-sidebar .nav-treeview > .nav-item > .nav-link > .nav-icon {
@@ -11958,7 +11961,7 @@ body.sidebar-collapse:not(.sidebar-mini-md):not(.sidebar-mini) .main-header::bef
 }
 
 .nav-sidebar .nav-header {
-  font-size: .9rem;
+  font-size: 1rem;
   padding: 0.5rem;
 }
 
@@ -12867,6 +12870,7 @@ body.sidebar-collapse:not(.sidebar-mini-md):not(.sidebar-mini) .main-header::bef
     margin-left: -10px;
     opacity: 0;
     visibility: hidden;
+    font-size: 16px;
   }
   .sidebar-mini.sidebar-collapse .logo-xl {
     opacity: 0;

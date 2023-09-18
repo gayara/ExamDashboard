@@ -6,7 +6,7 @@ import logo from '../../assets/img/graduation.png';
 function AdminSidebar() {
   return (
     <aside className="main-sidebar sidebar-dark-primary elevation-4">
-      <a href="../../index3.html" className="brand-link">
+      <a href="/" className="brand-link">
         <img
           src={logo}
           alt="company Logo"
