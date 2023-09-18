@@ -1,34 +1,30 @@
 import React, { useState } from 'react'
 
-function AdminSidebarTreeview() {
+function AdminSidebarTreeview({topic,icon,submenu}) {
 
-  const [isOpen,setIOpen] = useState(false);
+   const [isOpen, setOpen] = useState(false);
+
   return (
-    <li class={`nav-item has-treeview ${isOpen === true?'menu-open':'' } `}>
-            <a href="#" onClick={event => setIOpen(!isOpen)} class="nav-link">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
-              <p>
-                Dashboard
-                <i class="right fas fa-angle-left"></i>
-              </p>
+    <li className={`nav-item has-treeview ${isOpen === true ? 'menu-open' : ''}`}>
+      <a href="#" onClick={() => setOpen(!isOpen)} className="nav-link">
+      <i className={`nav-icon ${icon}`}></i>
+        <p>
+          {topic}
+          {/* <i className="right fas fa-angle-left"></i> */}
+        </p>
+      </a>
+      <ul className={`nav nav-treeview ${isOpen === true ? 'show' : 'hide'}`}>
+        {submenu?.map((menu, index) => (
+          <li className="nav-item" key={index}>
+            <a href={menu.url} className="nav-link">
+              <i className="far fa-circle nav-icon"></i>
+              {menu.title}
             </a>
-            <ul class="nav nav-treeview ">
-              <li class="nav-item">
-                <a href="../../index.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Dashboard v1</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="../../index2.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Dashboard v2</p>
-                </a>
-              </li>
-              
-            </ul>
           </li>
-  )
+        ))}
+      </ul>
+    </li>
+  );
 }
 
 export default AdminSidebarTreeview
