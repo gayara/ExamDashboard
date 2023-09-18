@@ -1,5 +1,6 @@
 import React from "react";
 import AdminSidebarTreeview from "./AdminSidebarTreeview";
+import logo from '../../assets/img/graduation.png';
 
 
 function AdminSidebar() {
@@ -7,16 +8,16 @@ function AdminSidebar() {
     <aside className="main-sidebar sidebar-dark-primary elevation-4">
       <a href="../../index3.html" className="brand-link">
         <img
-          src="../../assets/img/AdminLTELogo.png"
-          alt="AdminLTE Logo"
-          className="brand-image img-circle elevation-3"
+          src={logo}
+          alt="company Logo"
+          className="brand-image img-circle elevation-4"
           style={{ opacity: ".8" }}
         />
-        <span className="brand-text font-weight-light">EDUFORD</span>
+        <span className="brand-text font-weight-light">Eduford</span>
       </a>
 
       <div className="sidebar">
-        <div className="user-panel mt-3 pb-3 mb-3 d-flex">
+        {/* <div className="user-panel mt-3 pb-3 mb-3 d-flex">
           <div className="image">
             <img
               src="../../dist/img/user2-160x160.jpg"
@@ -29,7 +30,7 @@ function AdminSidebar() {
               Alexander Pierce
             </a>
           </div>
-        </div>
+        </div> */}
 
         <nav className="mt-2">
           <ul
@@ -39,23 +40,13 @@ function AdminSidebar() {
             data-accordion="false"
           >
             <li className="nav-item has-treeview">
-              <AdminSidebarTreeview topic="Dashboard" submenu={[{title:'Admin',url:'/admin/dashboard'}]}/>
-              <AdminSidebarTreeview topic="User"/>
-              <AdminSidebarTreeview topic="Subject"/>
-              <AdminSidebarTreeview topic="Module"/>
-              <AdminSidebarTreeview topic="Test" submenu={[{title:'Subjects',url:'/admin/subjectList'}]}/>
+              <AdminSidebarTreeview topic="Admin" icon="fas fa-user-shield" submenu={[{url:'/admin/dashboard'}]}/>
+              <AdminSidebarTreeview topic="User" icon="fas fa-user-graduate"/>
+              <AdminSidebarTreeview topic="Subject" icon="fas fa-book" />
+              <AdminSidebarTreeview topic="Module" icon="fas fa-star" />
+              <AdminSidebarTreeview topic="Test" icon="fas fa-pencil-alt" submenu={[{title:'Subjects',url:'/admin/subjectList'}]}/>
               
-              
-              
- 
-          </li>
-            
-            
-            
-           
-            
-          
-           
+          </li> 
           </ul>
         </nav>
       </div>

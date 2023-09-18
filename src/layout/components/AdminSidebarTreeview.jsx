@@ -1,16 +1,16 @@
 import React, { useState } from 'react'
 
-function AdminSidebarTreeview({topic,submenu}) {
+function AdminSidebarTreeview({topic,icon,submenu}) {
 
    const [isOpen, setOpen] = useState(false);
 
   return (
     <li className={`nav-item has-treeview ${isOpen === true ? 'menu-open' : ''}`}>
       <a href="#" onClick={() => setOpen(!isOpen)} className="nav-link">
-        <i className="nav-icon fas fa-tachometer-alt"></i>
+      <i className={`nav-icon ${icon}`}></i>
         <p>
           {topic}
-          <i className="right fas fa-angle-left"></i>
+          {/* <i className="right fas fa-angle-left"></i> */}
         </p>
       </a>
       <ul className={`nav nav-treeview ${isOpen === true ? 'show' : 'hide'}`}>
