@@ -2,7 +2,7 @@ import React from 'react'
 
 function AdminFooter() {
   return (
-    <footer className="main-footer">
+    <footer className="main-footer layout-footer-fixed">
     <div className="float-right d-none d-sm-block">
       <b>Version</b> 3.0.4
     </div>

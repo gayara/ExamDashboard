@@ -41,11 +41,12 @@ function AdminSidebar() {
           >
             <li className="nav-item has-treeview">
                 <AdminSidebarTreeview topic="Admin Dashboard" url="/admin/dashboard" icon="fas fa-user-shield" />
-                <AdminSidebarTreeview topic="Manage Student" icon="fas fa-user-graduate" />
+                <AdminSidebarTreeview topic="Manage User" icon="fas fa-user-graduate" />
                 <AdminSidebarTreeview topic="Subject Management" icon="fas fa-book" />
                 <AdminSidebarTreeview topic="Module Management" icon="fas fa-cubes" />
                 <AdminSidebarTreeview topic="MCQ Management" icon="fas fa-question-circle" />
-                <AdminSidebarTreeview topic="Create Exam" icon="fas fa-edit" submenu={[{ title: 'Subjects', url: '/admin/subjectList' }]} />
+                <AdminSidebarTreeview topic="Create MCQ" icon="fas fa-question" />
+                <AdminSidebarTreeview topic="Create Exam" icon="fas fa-edit" url ='/admin/subjectList' />
                 <AdminSidebarTreeview topic="Exam Management" icon="fas fa-tasks" />
                 <AdminSidebarTreeview topic="Student Progress" icon="fas fa-chart-line" />
                 <AdminSidebarTreeview topic="Student Dashboard" icon="fas fa-graduation-cap" />
