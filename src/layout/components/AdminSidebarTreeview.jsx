@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-function AdminSidebarTreeview({topic,icon,submenu}) {
+function AdminSidebarTreeview({topic,icon,submenu,url}) {
 
    const [isOpen, setOpen] = useState(false);
 
@@ -9,7 +9,7 @@ function AdminSidebarTreeview({topic,icon,submenu}) {
       <a href="#" onClick={() => setOpen(!isOpen)} className="nav-link">
       <i className={`nav-icon ${icon}`}></i>
         <p>
-          {topic}
+        <a href={url}>{topic}</a>
           {/* <i className="right fas fa-angle-left"></i> */}
         </p>
       </a>
