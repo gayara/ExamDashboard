@@ -2,16 +2,16 @@ import React from 'react'
 
 function CreateExam() {
   return (
-    <><section classNameName="content-header">
-    <div classNameName="container-fluid">
-      <div classNameName="row mb-2">
-        <div classNameName="col-sm-6">
+    <><section className="content-header">
+    <div className="container-fluid">
+      <div className="row mb-2">
+        <div className="col-sm-6">
           <h1>Simple Tables</h1>
         </div>
-        <div classNameName="col-sm-6">
-          <ol classNameName="breadcrumb float-sm-right">
-            <li classNameName="breadcrumb-item"><a href="#">Home</a></li>
-            <li classNameName="breadcrumb-item active">Simple Tables</li>
+        <div className="col-sm-6">
+          <ol className="breadcrumb float-sm-right">
+            <li className="breadcrumb-item"><a href="#">Home</a></li>
+            <li className="breadcrumb-item active">Simple Tables</li>
           </ol>
         </div>
       </div>

@@ -3,6 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import AdminLayout from "./layout/AdminLayout";
 import Dashboard from "./pages/Dashboard";
 import SubjectList from "./pages/CreateExam";
+import ManageUser from "./pages/ManageUser/ManageUser";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
         <Route exact path={"/admin"} element={<AdminLayout />}>
           <Route exact path={"dashboard"} element={<Dashboard />}></Route>
           <Route exact path={"CreateExam"} element={<SubjectList />}></Route>
+            <Route exact  path={"User"} element={<ManageUser />}></Route>
         </Route>
       </Routes>
     </>
