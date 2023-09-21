@@ -15,6 +15,7 @@ function AdminLayout() {
         <AdminSidebar />
         <div className="content-wrapper"> 
           <Outlet />
+          
         </div>
         <AdminFooter />
       </div>
