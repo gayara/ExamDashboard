@@ -91,7 +91,7 @@ function ManageUser(props) {
                 </div>
             </section>
             {/*Create admin user button*/}
-            <Button variant="primary" onClick={handleShow} className={"me-3"}>
+            <Button variant="primary" onClick={handleShow} className={"me-3 float-right"}>
                 Create Admin User
             </Button>
             {/*Edit user and reset pw*/}
@@ -114,6 +114,7 @@ function ManageUser(props) {
                 </Dropdown.Menu>
             </Dropdown>
 
+            <br/>
             {/*Create admin user modal*/}
             <>
 
@@ -271,50 +272,224 @@ function ManageUser(props) {
             </>
 
 
-            {/*Users Table*/}
-            <Table id={"tbl-mng-user"} striped bordered hover className={"m-3 me-6"}>
-                <thead>
-                <tr>
-                    <th>#</th>
-                    <th>Name</th>
-                    <th>E-mail</th>
-                    <th>Status</th>
-                    <th>Action</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>Peheliya</td>
-                    <td>peheliya@gmail.com</td>
-                    <td>ACTIVE</td>
-                    <td>
-                        <Button className={"btn-success"}>Edit</Button>
-                        <Button className={"btn-danger"}>Delete</Button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Peheliya</td>
-                    <td>peheliya@gmail.com</td>
-                    <td>ACTIVE</td>
-                    <td>
-                        <Button className={"btn-success"}>Edit</Button>
-                        <Button className={"btn-danger"}>Delete</Button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>Peheliya</td>
-                    <td>peheliya@gmail.com</td>
-                    <td>ACTIVE</td>
-                    <td>
-                        <Button className={"btn-success"}>Edit</Button>
-                        <Button className={"btn-danger"}>Delete</Button>
-                    </td>
-                </tr>
-                </tbody>
-            </Table>
+            <div className={"container-fluid me-3"}>
+                {/*Users Table*/}
+                <Table id={"tbl-mng-user"} striped bordered hover>
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>E-mail</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Peheliya</td>
+                        <td>peheliya@gmail.com</td>
+                        <td>ACTIVE</td>
+                        <td>
+                            <Button className={"btn-success"}>Edit</Button>
+                            <Button className={"btn-danger"}>Delete</Button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Peheliya</td>
+                        <td>peheliya@gmail.com</td>
+                        <td>ACTIVE</td>
+                        <td>
+                            <Button className={"btn-success"}>Edit</Button>
+                            <Button className={"btn-danger"}>Delete</Button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Peheliya</td>
+                        <td>peheliya@gmail.com</td>
+                        <td>ACTIVE</td>
+                        <td>
+                            <Button className={"btn-success"}>Edit</Button>
+                            <Button className={"btn-danger"}>Delete</Button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Peheliya</td>
+                        <td>peheliya@gmail.com</td>
+                        <td>ACTIVE</td>
+                        <td>
+                            <Button className={"btn-success"}>Edit</Button>
+                            <Button className={"btn-danger"}>Delete</Button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Peheliya</td>
+                        <td>peheliya@gmail.com</td>
+                        <td>ACTIVE</td>
+                        <td>
+                            <Button className={"btn-success"}>Edit</Button>
+                            <Button className={"btn-danger"}>Delete</Button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Peheliya</td>
+                        <td>peheliya@gmail.com</td>
+                        <td>ACTIVE</td>
+                        <td>
+                            <Button className={"btn-success"}>Edit</Button>
+                            <Button className={"btn-danger"}>Delete</Button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Peheliya</td>
+                        <td>peheliya@gmail.com</td>
+                        <td>ACTIVE</td>
+                        <td>
+                            <Button className={"btn-success"}>Edit</Button>
+                            <Button className={"btn-danger"}>Delete</Button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Peheliya</td>
+                        <td>peheliya@gmail.com</td>
+                        <td>ACTIVE</td>
+                        <td>
+                            <Button className={"btn-success"}>Edit</Button>
+                            <Button className={"btn-danger"}>Delete</Button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Peheliya</td>
+                        <td>peheliya@gmail.com</td>
+                        <td>ACTIVE</td>
+                        <td>
+                            <Button className={"btn-success"}>Edit</Button>
+                            <Button className={"btn-danger"}>Delete</Button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Peheliya</td>
+                        <td>peheliya@gmail.com</td>
+                        <td>ACTIVE</td>
+                        <td>
+                            <Button className={"btn-success"}>Edit</Button>
+                            <Button className={"btn-danger"}>Delete</Button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Peheliya</td>
+                        <td>peheliya@gmail.com</td>
+                        <td>ACTIVE</td>
+                        <td>
+                            <Button className={"btn-success"}>Edit</Button>
+                            <Button className={"btn-danger"}>Delete</Button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Peheliya</td>
+                        <td>peheliya@gmail.com</td>
+                        <td>ACTIVE</td>
+                        <td>
+                            <Button className={"btn-success"}>Edit</Button>
+                            <Button className={"btn-danger"}>Delete</Button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Peheliya</td>
+                        <td>peheliya@gmail.com</td>
+                        <td>ACTIVE</td>
+                        <td>
+                            <Button className={"btn-success"}>Edit</Button>
+                            <Button className={"btn-danger"}>Delete</Button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Peheliya</td>
+                        <td>peheliya@gmail.com</td>
+                        <td>ACTIVE</td>
+                        <td>
+                            <Button className={"btn-success"}>Edit</Button>
+                            <Button className={"btn-danger"}>Delete</Button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Peheliya</td>
+                        <td>peheliya@gmail.com</td>
+                        <td>ACTIVE</td>
+                        <td>
+                            <Button className={"btn-success"}>Edit</Button>
+                            <Button className={"btn-danger"}>Delete</Button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Peheliya</td>
+                        <td>peheliya@gmail.com</td>
+                        <td>ACTIVE</td>
+                        <td>
+                            <Button className={"btn-success"}>Edit</Button>
+                            <Button className={"btn-danger"}>Delete</Button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Peheliya</td>
+                        <td>peheliya@gmail.com</td>
+                        <td>ACTIVE</td>
+                        <td>
+                            <Button className={"btn-success"}>Edit</Button>
+                            <Button className={"btn-danger"}>Delete</Button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Peheliya</td>
+                        <td>peheliya@gmail.com</td>
+                        <td>ACTIVE</td>
+                        <td>
+                            <Button className={"btn-success"}>Edit</Button>
+                            <Button className={"btn-danger"}>Delete</Button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Peheliya</td>
+                        <td>peheliya@gmail.com</td>
+                        <td>ACTIVE</td>
+                        <td>
+                            <Button className={"btn-success"}>Edit</Button>
+                            <Button className={"btn-danger"}>Delete</Button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Peheliya</td>
+                        <td>peheliya@gmail.com</td>
+                        <td>ACTIVE</td>
+                        <td>
+                            <Button className={"btn-success"}>Edit</Button>
+                            <Button className={"btn-danger"}>Delete</Button>
+                        </td>
+                    </tr>
+
+                    </tbody>
+                </Table>
+            </div>
+
 
         </div>
     );

@@ -1,3 +1,9 @@
 #btn-add-user{
     float: right;
 }
+
+#tbl-mng-user{
+    max-height: 65vh;
+    overflow: auto;
+    display:inline-block;
+}
