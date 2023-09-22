@@ -1,0 +1,34 @@
+#c-mcq-table{
+}
+
+#c-mcq-img{
+    height: 150px;
+    width: auto;
+    display: block;
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: -10px;
+}
+
+#c-mcq-file{
+    margin-bottom: auto;
+    margin-top: auto;
+}
+
+#c-ans-img{
+    height:50px;
+    width: auto;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#c-ans-modal{
+    height:auto;
+    max-width: 265px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#txt-answer{
+    width: max-content;
+}
