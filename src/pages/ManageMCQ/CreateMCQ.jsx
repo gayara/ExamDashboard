@@ -37,14 +37,6 @@ function CreateMcq(props) {
       setImage(noImage);
     }
 
-    const isDefaultVal = (event) => {
-      if(event.target.default==event.target._selectMenuItem()){
-
-      }
-    }
-    const [i,setI] = useState(0);
-
-
     return (
         <div>
             <section className="content-header">
@@ -77,11 +69,14 @@ function CreateMcq(props) {
                                 <div className={"col-xs-12 col-sm-6"}>
                                     <Form.Group controlId="formGridState">
                                         <Form.Label>Subject</Form.Label>
-                                        <Form.Select onChange={isDefaultVal} defaultValue="Select Subject" id={"c-mcq-subject"}>
-                                            <option>Select Subject</option>
+                                        <Form.Select id={"c-mcq-subject"} defaultValue={"Select Subject"}>
+                                            <option disabled={false}>Select Subject</option>
                                             <option>Sub-1</option>
                                             <option>Sub-2</option>
+                                            required
                                         </Form.Select>
+                                        <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+                                        <Form.Control.Feedback onInvalid={"Select a Subject."}></Form.Control.Feedback>
                                     </Form.Group>
                                 </div>
                                 <div className={"col-xs-12 col-sm-6"}>

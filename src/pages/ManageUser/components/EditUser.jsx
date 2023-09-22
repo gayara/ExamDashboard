@@ -5,36 +5,36 @@ import Button from "react-bootstrap/Button";
 import ResetPassword from "./ResetPassword";
 
 function EditUser(props) {
-    const [show, setShow] = useState(false);
-    const handleClose = () => setShow(false);
-    const handleShow = () => {
-        setShow(true);
-        clearVal();
+    const [show2, setShow2] = useState(false);
+    const handleClose2 = () => setShow2(false);
+    const handleShow2 = () => {
+        setShow2(true);
+        clearVal2();
     }
-    const [validated, setValidated] = useState(false);
+    const [validated2, setValidated2] = useState(false);
 
-    const handleSubmit = (event) => {
+    const handleSubmit2 = (event) => {
         const form = event.currentTarget;
         if (form.checkValidity() === false) {
             event.preventDefault();
             event.stopPropagation();
         }
 
-        setValidated(true);
+        setValidated2(true);
     };
-    const clearVal = ()=>{
-        setValidated(false);
+    const clearVal2 = ()=>{
+        setValidated2(false);
     }
     return (
         <>
-            <Button variant="success" onClick={handleShow} className={"me-3"}>
+            <Button variant="success" onClick={handleShow2} className={"me-3"}>
                 Edit
             </Button>
             {/*edit admin user modal*/}
             <>
 
-                <Modal show={show} onHide={handleClose} animation={false}>
-                    <Form noValidate validated={validated} onSubmit={handleSubmit}>
+                <Modal show={show2} onHide={handleClose2} animation={false}>
+                    <Form noValidate validated={validated2} onSubmit={handleSubmit2}>
                         <Modal.Header closeButton>
                             <Modal.Title>Edit Admin User</Modal.Title>
                         </Modal.Header>
@@ -60,7 +60,7 @@ function EditUser(props) {
                         </Modal.Body>
                         <Modal.Footer>
                             <ResetPassword></ResetPassword>
-                            <Button variant="secondary" type={"reset"} onClick={clearVal} >
+                            <Button variant="secondary" type={"reset"} onClick={clearVal2} >
                                 Clear
                             </Button>
                             <Button variant="primary" type={"submit"}>

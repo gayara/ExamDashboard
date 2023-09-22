@@ -42,10 +42,10 @@ function ManageUser(props) {
 
             <br/>
 
-            <div className={"container-fluid me-3"}>
+            <div className={"me-3"} id={"table-div"}>
                 {/*Users Table*/}
                 <Table id={"tbl-mng-user"} striped bordered hover>
-                    <thead>
+                    <thead id={"mng-user-thead"}>
                     <tr>
                         <th>#</th>
                         <th>Name</th>
