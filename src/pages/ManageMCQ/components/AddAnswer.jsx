@@ -18,11 +18,11 @@ function AddAnswer(props) {
             event.preventDefault();
             event.stopPropagation();
         }
-
         setValidated(true);
     };
     const clearVal = ()=>{
         setValidated(false);
+        setRadioValue(false);
     }
     const handleShow = () => {
         clearVal();
@@ -89,6 +89,7 @@ function AddAnswer(props) {
                                     <div className={"float-right"}>
                                         {radios.map((radio, idx) => (
                                             <ToggleButton
+                                                className={""}
                                                 key={idx}
                                                 id={`radio-${idx}`}
                                                 type="radio"
@@ -104,7 +105,7 @@ function AddAnswer(props) {
                                         </div>
                                 </div>
                             </div>
-                            <div className={"row"} id={"imageSelect"} hidden={true}>
+                            <div className={"row"} id={"imageSelect"}>
                                 <div className={"col-12"}>
                                     <Form.Group Id={"validation3"}>
                                         <Form.Label htmlFor="file-image-answer">Select Image</Form.Label>
@@ -114,11 +115,11 @@ function AddAnswer(props) {
                                             accept={"image/*"}
                                             onChange={onImageChange}
                                         /><Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-                                        <Form.Control.Feedback type={"invalid"}>.</Form.Control.Feedback>
+                                        <Form.Control.Feedback type={"invalid"}>Please Select an Image.</Form.Control.Feedback>
                                     </Form.Group>
                                 </div>
                             </div>
-                            <div className={"row"} id={"imageSelect2"} hidden={true}>
+                            <div className={"row"} id={"imageSelect2"}>
                                 <div className={"col-12"}>
                                         <img src={image} alt={"Selected Image"} id={"c-mcq-img"}/>
                                 </div>
@@ -136,6 +137,7 @@ function AddAnswer(props) {
                     </Form>
                 </Modal>
             </>
+
         </div>
     );
 }
