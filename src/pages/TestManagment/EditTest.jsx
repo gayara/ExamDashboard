@@ -86,55 +86,58 @@ function EditTest() {
   </div>
 </section>
 
-<div className="row">
-  <div className="col">
-    <div className="card">
-      <div className="card-header">
-        <h3 className="card-title text-primary" >List of Questions</h3>
+<section className="content">
+  <div className="container-fluid">
+      <div className="row">
+        <div className="col">
+          <div className="card">
+            <div className="card-header">
+              <h3 className="card-title text-primary" >List of Questions</h3>
+            </div>
+          
+            <div className="card-body table-responsive p-0">
+              <table className="table table-bordered table-striped">
+                <thead>
+                  <tr>
+                    <th className="t1">Questions</th>
+                    <th className="t2">Select</th>
+                    <th className="t2">Delete</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Question 1</td>
+                    <td><input type="checkbox" name="select1" /></td>
+                    <td><a href="/admin" class="text-danger" >Delete</a></td>
+                  </tr>
+                  <tr>
+                    <td>Question 2</td>
+                    <td><input type="checkbox" name="select2" /></td>
+                    <td><a href="/" class="text-danger" >Delete</a></td>
+                  </tr>
+                  <tr>
+                    <td>Question 3</td>
+                    <td><input type="checkbox" name="select3" /></td>
+                    <td><a href="/" class="text-danger" >Delete</a></td>
+                  </tr>
+                </tbody>
+                <tfoot>
+                  <tr>
+                    
+                    <td colspan="3">
+                      <button type="submit" class="btn btn-primary folat-right mx-2">cancle</button>
+                      <button type="submit btn2" class="btn btn-primary">Update</button>
+                    </td>
+                  </tr>
+                </tfoot>
+              </table>
+            </div>
+            {/* /.card-body */}
+          </div>
+        </div>
       </div>
-     
-      <div className="card-body table-responsive p-0">
-        <table className="table table-bordered table-striped">
-          <thead>
-            <tr>
-              <th className="t1">Questions</th>
-              <th className="t2">Select</th>
-              <th className="t2">Delete</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Question 1</td>
-              <td><input type="checkbox" name="select1" /></td>
-              <td><a href="/admin" class="text-danger" >Delete</a></td>
-            </tr>
-            <tr>
-              <td>Question 2</td>
-              <td><input type="checkbox" name="select2" /></td>
-              <td><a href="/" class="text-danger" >Delete</a></td>
-            </tr>
-            <tr>
-              <td>Question 3</td>
-              <td><input type="checkbox" name="select3" /></td>
-              <td><a href="/" class="text-danger" >Delete</a></td>
-            </tr>
-          </tbody>
-          <tfoot>
-            <tr>
-              
-              <td colspan="3">
-                <button type="submit" class="btn btn-primary folat-right mx-2">cancle</button>
-                <button type="submit btn2" class="btn btn-primary">Update</button>
-              </td>
-            </tr>
-          </tfoot>
-        </table>
-      </div>
-      {/* /.card-body */}
     </div>
-  </div>
-</div>
-
+</section>
 
     </>
 

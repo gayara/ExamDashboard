@@ -81,61 +81,63 @@ function TestList() {
     </div>
   </div>
 </section>
+<section className="content">
+  <div className="container-fluid">
+    <div className="row">
+      <div className="col-12">
+        <div className="card">
+          <div className="card-header">
+            <h3 className="card-title text-primary" >List of Questions</h3>
+          </div>
+        
+          <div className="card-body table-responsive p-0">
+            <table className="table table-bordered table-striped">
+              <thead>
+                <tr>
+                    <th>Test Id</th>
+                  <th className="t1">Questions</th>
+                  
+                  <th colspan='2' className="t2">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                <td>1</td>
+                  <td>Question 1</td>
+                  
+                  <td><a href="/admin/editTest" class="text-success" >Edit</a></td>
+                  <td><a href="/" class="text-danger" >Delete</a></td>
 
-<div className="row">
-  <div className="col-12">
-    <div className="card">
-      <div className="card-header">
-        <h3 className="card-title text-primary" >List of Questions</h3>
+                </tr>
+                <tr>
+                <td>2</td>
+                  <td>Question 1</td>
+                  
+                  <td><a href="/admin/editTest" class="text-success" >Edit</a></td>
+                  <td><a href="/" class="text-danger" >Delete</a></td>
+                </tr>
+                <tr>
+                <td>3</td>
+                  <td>Question 1</td>
+                  
+                  <td><a href="/admin/editTest" class="text-success" >Edit</a></td>
+                  <td><a href="/" class="text-danger" >Delete</a></td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  
+                  
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+          {/* /.card-body */}
+        </div>
       </div>
-     
-      <div className="card-body table-responsive p-0">
-        <table className="table table-bordered table-striped">
-          <thead>
-            <tr>
-                <th>Test Id</th>
-              <th className="t1">Questions</th>
-              
-              <th colspan='2' className="t2">Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-            <td>1</td>
-              <td>Question 1</td>
-              
-              <td><a href="/admin/editTest" class="text-success" >Edit</a></td>
-              <td><a href="/" class="text-danger" >Delete</a></td>
-
-            </tr>
-            <tr>
-            <td>2</td>
-              <td>Question 1</td>
-              
-              <td><a href="/admin/editTest" class="text-success" >Edit</a></td>
-              <td><a href="/" class="text-danger" >Delete</a></td>
-            </tr>
-            <tr>
-            <td>3</td>
-              <td>Question 1</td>
-              
-              <td><a href="/admin/editTest" class="text-success" >Edit</a></td>
-              <td><a href="/" class="text-danger" >Delete</a></td>
-            </tr>
-          </tbody>
-          <tfoot>
-            <tr>
-              
-              
-            </tr>
-          </tfoot>
-        </table>
-      </div>
-      {/* /.card-body */}
     </div>
   </div>
-</div>
-
+</section>
 
     </>
 
