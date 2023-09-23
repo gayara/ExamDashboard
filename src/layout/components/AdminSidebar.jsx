@@ -4,7 +4,9 @@ import logo from '../../assets/img/graduation.png';
 
 
 function AdminSidebar() {
+  
   return (
+    
     <aside className="main-sidebar sidebar-dark-primary elevation-4">
       <a href="/" className="brand-link">
         <img
@@ -16,7 +18,7 @@ function AdminSidebar() {
         <span className="brand-text font-weight-light">Eduford</span>
       </a>
 
-      <div className="sidebar">
+      <div className="sidebar overflow-auto">
         {/* <div className="user-panel mt-3 pb-3 mb-3 d-flex">
           <div className="image">
             <img

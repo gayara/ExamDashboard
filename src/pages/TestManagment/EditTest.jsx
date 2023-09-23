@@ -1,19 +1,17 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 
-
-  
-function TestList() {
+function EditTest() {
   return (
     <>
     <section className="content-header">
-        <div className="container-fluid">
-            <div className="row mb-2">
-            <div className="col-sm-6">
-                <h4>List of Test</h4>
-            </div>
-            </div>
+      <div className="container-fluid">
+        <div className="row mb-2">
+          <div className="col-sm-6">
+            <h4>Edit Test</h4>
+          </div>
         </div>
+      </div>
     </section>
 
 <section className="content">
@@ -21,12 +19,11 @@ function TestList() {
     <div className="card card-default">
       <div className="card-header">
         <div className="card-tools">
-            <Link to='/admin/createTest'>
+        <Link to='/admin/testList'>
             <button type="button" className="btn btn-tool" data-card-widget="collapse" >
-            Back to Create Test
+            Back to Test List
             </button>
             </Link>
-
         </div>
       </div>
 
@@ -46,7 +43,7 @@ function TestList() {
               </select>
             </div>
             <div className="form-group">
-              <label>Difficulty Level</label>
+              <label>Difficulty</label>
               <select className="form-control select2" style={{ width: "100%;" }}>
                 <option selected="selected">Easy</option>
                 <option>Medium</option>
@@ -72,7 +69,14 @@ function TestList() {
           </div>
         </div>
 
-        
+        <div className='row'>
+          <div className='col'>
+            <div className="form-group">
+                  <label>Title</label>
+                  <input type="text" className="form-control" placeholder="Enter test title" />
+                </div>
+            </div>
+          </div>
       </div>
       
       <div className="card-footer">
@@ -83,7 +87,7 @@ function TestList() {
 </section>
 
 <div className="row">
-  <div className="col-12">
+  <div className="col">
     <div className="card">
       <div className="card-header">
         <h3 className="card-title text-primary" >List of Questions</h3>
@@ -93,40 +97,35 @@ function TestList() {
         <table className="table table-bordered table-striped">
           <thead>
             <tr>
-                <th>Test Id</th>
               <th className="t1">Questions</th>
-              
-              <th colspan='2' className="t2">Action</th>
+              <th className="t2">Select</th>
+              <th className="t2">Delete</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-            <td>1</td>
               <td>Question 1</td>
-              
-              <td><a href="/admin/editTest" class="text-success" >Edit</a></td>
-              <td><a href="/" class="text-danger" >Delete</a></td>
-
+              <td><input type="checkbox" name="select1" /></td>
+              <td><a href="/admin" class="text-danger" >Delete</a></td>
             </tr>
             <tr>
-            <td>2</td>
-              <td>Question 1</td>
-              
-              <td><a href="/admin/editTest" class="text-success" >Edit</a></td>
+              <td>Question 2</td>
+              <td><input type="checkbox" name="select2" /></td>
               <td><a href="/" class="text-danger" >Delete</a></td>
             </tr>
             <tr>
-            <td>3</td>
-              <td>Question 1</td>
-              
-              <td><a href="/admin/editTest" class="text-success" >Edit</a></td>
+              <td>Question 3</td>
+              <td><input type="checkbox" name="select3" /></td>
               <td><a href="/" class="text-danger" >Delete</a></td>
             </tr>
           </tbody>
           <tfoot>
             <tr>
               
-              
+              <td colspan="3">
+                <button type="submit" class="btn btn-primary folat-right mx-2">cancle</button>
+                <button type="submit btn2" class="btn btn-primary">Update</button>
+              </td>
             </tr>
           </tfoot>
         </table>
@@ -142,4 +141,4 @@ function TestList() {
   )
 }
 
-export default TestList;
+export default EditTest;

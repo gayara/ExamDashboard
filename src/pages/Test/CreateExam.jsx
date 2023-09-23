@@ -106,7 +106,7 @@ function CreateExam() {
             <tr>
               <td>Question 1</td>
               <td><input type="checkbox" name="select1" /></td>
-              <td><a href="/admin" class="text-danger" >Delete</a></td>
+              <td><a href="/" class="text-danger" >Delete</a></td>
             </tr>
             <tr>
               <td>Question 2</td>

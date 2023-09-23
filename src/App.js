@@ -4,6 +4,7 @@ import AdminLayout from "./layout/AdminLayout";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import CreateExam from "./pages/Test/CreateExam";
 import TestList from "./pages/TestManagment/TestList";
+import EditTest from "./pages/TestManagment/EditTest";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
           <Route exact path={"dashboard"} element={<Dashboard />}></Route>
           <Route exact path={"createTest"} element={<CreateExam/>}></Route>
           <Route exact path={"testList"} element={<TestList/>}></Route>
+          <Route exact path={"editTest"} element={<EditTest/>}></Route>
         </Route>
       </Routes>
     </>

@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { useState } from 'react'
 
-function AdminHeaderNavbar({menu}) {
+function ToggleSidebar({menu}) {
 
         const [isOpen, setOpen] = useState(false);
      
@@ -13,4 +13,4 @@ function AdminHeaderNavbar({menu}) {
      }
      
 
-export default AdminHeaderNavbar
+export default ToggleSidebar;
