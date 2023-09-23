@@ -6,6 +6,7 @@ import SubjectList from "./pages/CreateExam";
 import ManageUser from "./pages/ManageUser/ManageUser";
 import CreateMCQ from "./pages/ManageMCQ/CreateMCQ";
 import ListOfMCQ from "./pages/ManageMCQ/ListOfMCQ";
+import CreateQuestion from "./pages/ManageMCQ/CreateQuestion";
 
 function App() {
   return (
@@ -14,9 +15,10 @@ function App() {
         <Route exact path={"/admin"} element={<AdminLayout />}>
           <Route exact path={"dashboard"} element={<Dashboard />}></Route>
           <Route exact path={"CreateExam"} element={<SubjectList />}></Route>
-            <Route exact  path={"User"} element={<ManageUser />}></Route>
-            <Route exact  path={"Mcq"} element={<CreateMCQ />}></Route>
-            <Route exact  path={"Mcq-list"} element={<ListOfMCQ />}></Route>
+          <Route exact  path={"User"} element={<ManageUser />}></Route>
+          <Route exact  path={"Mcq"} element={<CreateMCQ />}></Route>
+          <Route exact  path={"mcq/list"} element={<ListOfMCQ />}></Route>
+          <Route exact  path={"mcq/add"} element={<CreateQuestion />}></Route>
         </Route>
       </Routes>
     </>

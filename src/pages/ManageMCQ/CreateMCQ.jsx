@@ -6,6 +6,7 @@ import "./CreateMCQStyle.css";
 import noImage from "../../assets/img/noimage.jpg"
 import ShowImageModal from "./components/ShowImageModal";
 import EditMCQModal from "./components/EditMCQModal";
+import AddAnswer from "./components/AddAnswer";
 
 
 function CreateMcq(props) {
@@ -70,9 +71,9 @@ function CreateMcq(props) {
                                     <Form.Group controlId="formGridState">
                                         <Form.Label>Subject</Form.Label>
                                         <Form.Select id={"c-mcq-subject"} defaultValue={"Select Subject"}>
-                                            <option disabled={false}>Select Subject</option>
-                                            <option>Sub-1</option>
-                                            <option>Sub-2</option>
+                                            <option>Select Subject</option>
+                                            <option value={"1"}>Sub-1</option>
+                                            <option value={'2'}>Sub-2</option>
                                             required
                                         </Form.Select>
                                         <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
@@ -109,7 +110,6 @@ function CreateMcq(props) {
                                             <option>Select MCQ Type</option>
                                             <option>Text</option>
                                             <option>Image</option>
-
                                         </Form.Select>
                                     </Form.Group>
                                 </div>
@@ -164,7 +164,7 @@ function CreateMcq(props) {
                             </div>
                             <div className={"row"}>
                                 <div className={"col-xs-12 col-sm-12"}>
-                                    <Button>Add Answer</Button>
+                                    <AddAnswer></AddAnswer>
                                 </div>
                                 <Table id={"c-mcq-table"} striped bordered hover className={"me-3"}>
                                     <thead>
