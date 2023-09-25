@@ -7,6 +7,7 @@ import ManageUser from "./pages/ManageUser/ManageUser";
 import CreateMCQ from "./pages/ManageMCQ/CreateMCQ";
 import ListOfMCQ from "./pages/ManageMCQ/ListOfMCQ";
 import CreateQuestion from "./pages/ManageMCQ/CreateQuestion";
+import ManageBookmark from "./pages/ManageBookmark/ManageBookmark";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route exact  path={"Mcq"} element={<CreateMCQ />}></Route>
           <Route exact  path={"mcq/list"} element={<ListOfMCQ />}></Route>
           <Route exact  path={"mcq/add"} element={<CreateQuestion />}></Route>
+          <Route exact  path={"bookmark"} element={<ManageBookmark />}></Route>
         </Route>
       </Routes>
     </>

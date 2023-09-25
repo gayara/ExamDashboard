@@ -29,7 +29,7 @@ function ManageUser(props) {
 
             <AddUser></AddUser>
             {/* User Type Dropdown*/}
-            <Dropdown>
+            <Dropdown className={"mb-3"}>
                 <Dropdown.Toggle className={"ms-3"} variant="primary" id="dropdown-user-type">
                     User Type
                 </Dropdown.Toggle>
@@ -39,8 +39,6 @@ function ManageUser(props) {
                     <Dropdown.Item href="#/action-2">Student</Dropdown.Item>
                 </Dropdown.Menu>
             </Dropdown>
-
-            <br/>
 
             <div className={"me-3"} id={"table-div"}>
                 {/*Users Table*/}
