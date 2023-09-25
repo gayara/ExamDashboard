@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import InputText from "../../../components/InputText";
 
 function AddUser(props) {
     const [show, setShow] = useState(false);
@@ -40,21 +41,26 @@ function AddUser(props) {
                             <Modal.Title>Register Admin User</Modal.Title>
                         </Modal.Header>
                         <Modal.Body>
-                            <Form.Group controlId={"validation1"}>
-                                <Form.Label htmlFor="txt-name">Name</Form.Label>
-                                <Form.Control
-                                    type="text"
-                                    id="txt-name"
+                            <div className={"row"}>
+                                <InputText
+                                    label={"Name"}
+                                    id={"txt-name"}
+                                    type={"text"}
+                                    name={"txt-name"}
                                     placeholder={"Name"}
-                                    required
-                                /><Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-                            </Form.Group> <Form.Group controlId={"validation2"}>
+                                    required={true}
+                                    pattern={"^[A-Za-z]&"}
+                                    colSize={"col-6"} />
+                            </div>
+
+                            <Form.Group controlId={"validation2"}>
                             <Form.Label htmlFor="txt-email">E-Mail</Form.Label>
                             <Form.Control
                                 type="email"
                                 id="txt-email"
+                                name="txt-email"
                                 placeholder={"abc@email.com"}
-                                required
+                                required={true}
                             /><Form.Control.Feedback>Looks good!</Form.Control.Feedback>
                             <Form.Control.Feedback type={"invalid"}>Provide an valid e-mail.</Form.Control.Feedback>
                         </Form.Group> <Form.Group controlId={"validation3"}>
