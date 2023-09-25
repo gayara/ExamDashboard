@@ -123,9 +123,11 @@ function CreateExam() {
               <tfoot>
                 <tr>
                   
-                  <td colspan="3">
-                    <button type="submit" class="btn btn-primary folat-right mx-2">Create New Test</button>
-                    <button type="submit btn2" class="btn btn-primary">Submit</button>
+                  <td colspan="3" className='card-header '>
+                    <div className='card-tools mt-4'>
+                    <button type="submit" class="btn btn-light border border-secondary folat-right px-2">Create New Test</button>
+                    <button type="submit btn2" class="btn btn-success ml-4 mr-2 px-4">Submit</button>
+                    </div>
                   </td>
                 </tr>
               </tfoot>

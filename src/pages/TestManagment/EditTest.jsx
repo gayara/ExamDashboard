@@ -20,7 +20,7 @@ function EditTest() {
       <div className="card-header">
         <div className="card-tools">
         <Link to='/admin/testList'>
-            <button type="button" className="btn btn-tool" data-card-widget="collapse" >
+            <button type="button" className="btn btn-tool text-dark bg-success px-4" data-card-widget="collapse" >
             Back to Test List
             </button>
             </Link>
@@ -122,13 +122,17 @@ function EditTest() {
                   </tr>
                 </tbody>
                 <tfoot>
+              
                   <tr>
                     
-                    <td colspan="3">
-                      <button type="submit" class="btn btn-primary folat-right mx-2">cancle</button>
-                      <button type="submit btn2" class="btn btn-primary">Update</button>
+                    <td colspan="3" className='card-header '>
+                    <div className="card-tools mt-4">
+                      <button type="submit" class="btn btn-secondary folat-right px-4 ">Cancle</button>
+                      <button type="submit btn2" class="btn btn-primary ml-4 mr-2 px-4">Update</button>
+                      </div>
                     </td>
                   </tr>
+
                 </tfoot>
               </table>
             </div>
