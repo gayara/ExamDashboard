@@ -1,0 +1,49 @@
+.SubjectWrapper {
+    background: rgba(255, 255, 255, 0.87);
+    padding: 20px 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.top {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.SujectManagement {
+    color: #000;
+    font-family: Inter;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.CreateBtn {
+    background: #0466FA;
+    padding: 5px 12px;
+    border: none;
+    border-radius: 8px;
+    color: white;
+}
+
+.table {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
+}
+
+.headers {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-right: 35px;
+}
+
+.text {
+    font-weight: bold;
+    font-size: 18px;
+}
