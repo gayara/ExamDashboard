@@ -2,9 +2,27 @@ import React, {useEffect, useState} from 'react';
 import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import InputText from "../../../components/InputText";
-
+import axios from "axios";
+import {useNavigate} from "react-router-dom";
 function AddUser(props) {
+
+    let navigate = useNavigate();
+
+    const[user,setUser]= useState({
+        name:"",
+        email:"",
+        password:"",
+        userType:0,
+        userStatus:1
+    })
+    const{name,email,password,userType,userStatus}=user
+
+    const onInputChange = (e) => {
+        const { name, value } = e.target;
+        console.log(`Updating ${name} with value: ${value}`);
+        setUser({ ...user, [name]: value });
+    };
+
     const [show, setShow] = useState(true);
     const handleClose = () => setShow(false);
     const handleShow = () => {
@@ -14,20 +32,26 @@ function AddUser(props) {
     const [validated, setValidated] = useState(false);
 
     const handleSubmit = (event) => {
+        event.preventDefault();
         checkPassword();
         const form = event.currentTarget;
         if (form.checkValidity() === false) {
-            event.preventDefault();
             event.stopPropagation();
         }
-
         setValidated(true);
     };
-    const clearVal = ()=>{
+    const clearVal = () => {
+        setUser({
+            name: "",
+            email: "",
+            password: "",
+            userType: 0,
+            userStatus: 1
+        });
         setValidated(false);
-    }
+    };
     function checkPassword() {
-        var input = document.getElementById('txt-cpw');
+        const input = document.getElementById('txt-cpw');
         if (input.value != document.getElementById('txt-pw').value) {
             input.setCustomValidity('Password Must be Matching.');
             setValidated(false);
@@ -36,18 +60,20 @@ function AddUser(props) {
             setValidated(true);
         }
     }
-    var name = "";
-    useEffect(()=>{
-      let title = document.getElementById("add-title");
-      title = `Register Admin User : ${name}`
-    },[name]);
+    // var name = "";
+    // useEffect(()=>{
+    //   let title = document.getElementById("add-title");
+    //   title = `Register Admin User : ${name}`
+    // },[name]);
 
-    const changeName = (e) =>{
-       let namet = e.target.value;
-       if(namet.value().trim !== ""){
-           name=namet;
-       }
-    }
+    // const changeName = (e) =>{
+    //    let namet = e.target.value;
+    //    if(namet.value().trim !== ""){
+    //        name=namet;
+    //    }
+    // }
+
+
 
     return (
         <div>
@@ -74,7 +100,8 @@ function AddUser(props) {
                                     placeholder={"Name"}
                                     required={true}
                                     pattern="^[a-z ,.'-]+$"
-                                    // onBlur=
+                                    value={name}
+                                    onChange={(e)=>onInputChange(e)}
                                 /><Form.Control.Feedback>Looks good!</Form.Control.Feedback>
                                 <Form.Control.Feedback type={"invalid"}>Provide a valid name.</Form.Control.Feedback>
                             </Form.Group>
@@ -87,6 +114,8 @@ function AddUser(props) {
                                 placeholder={"abc@email.com"}
                                 required={true}
                                 pattern={"^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$"}
+                                value={email}
+                                onChange={(e)=>onInputChange(e)}
                             /><Form.Control.Feedback>Looks good!</Form.Control.Feedback>
                             <Form.Control.Feedback type={"invalid"}>Provide an valid e-mail.</Form.Control.Feedback>
                         </Form.Group> <Form.Group controlId={"validation3"}>
@@ -100,6 +129,8 @@ function AddUser(props) {
                                 required
                                 minLength={8}
                                 pattern="^[A-Za-z0-9]{8,20}$"
+                                value={password}
+                                onChange={(e)=>onInputChange(e)}
                             /><Form.Control.Feedback type={"invalid"}>Enter a Password between 8-20 characters using letters and numbers.</Form.Control.Feedback>
                             <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
                             <Form.Text id="passwordHelpBlock" muted>

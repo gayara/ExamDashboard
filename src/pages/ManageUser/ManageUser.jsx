@@ -1,26 +1,40 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import Dropdown from "react-bootstrap/Dropdown";
 import Button from "react-bootstrap/Button";
 import Table from "react-bootstrap/Table";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./ManageUserStyle.css"
+import "./ManageUserStyle.css";
 import AddUser from "./components/AddUser";
 import EditUser from "./components/EditUser";
-import AddUser2 from "./components/AddUser2";
 import axios from "axios";
+
 function ManageUser(props) {
+    const [users, setUsers] = useState([]);
+    const [selectedUser, setSelectedUser] = useState(null);
+    const [showEditModal, setShowEditModal] = useState(false);
 
-    const [users,setUsers]=useState([])
-
-    useEffect(()=>{
+    useEffect(() => {
         loadUsers();
-    });
+    }, []);
 
-    const loadUsers=async ()=>{
-        const result=await axios.get("http://localhost:8080/api/user")
-        setUsers(result.data);
-        //console.log(result.data);
-    }
+    const loadUsers = async () => {
+        try {
+            const result = await axios.get("http://localhost:8080/api/user");
+            setUsers(result.data);
+        } catch (error) {
+            console.error("Error fetching user data:", error);
+        }
+    };
+
+    const handleEditClick = (user) => {
+        setSelectedUser(user);
+        setShowEditModal(true);
+    };
+
+    const handleDeleteClick = (userId) => {
+        // Implement logic to handle delete operation for the user with userId
+        console.log(`Delete user with ID: ${userId}`);
+    };
 
     return (
         <div>
@@ -55,36 +69,39 @@ function ManageUser(props) {
             </Dropdown>
 
             <div className={"me-3 ms-3"} id={"table-div"}>
-                {/*Users Table*/}
                 <Table id={"tbl-mng-user"} striped bordered hover>
-                    <thead id={"mng-user-thead"}>
-                    <tr>
-                        <th scope={"col"}>#</th>
-                        <th scope={"col"}>Name</th>
-                        <th scope={"col"}>E-mail</th>
-                        <th scope={"col"}>Type</th>
-                        <th scope={"col"}>Status</th>
-                        <th scope={"col"}>Action</th>
-                    </tr>
-                    </thead>
                     <tbody>
-                    {
-                        users.map((user,index)=>(
-                            <tr>
-                                <td scope={"row"} key={index}>{index+1}</td>
-                                <td>{user.name}</td>
-                                <td>{user.email}</td>
-                                <td>{user.userType.toString()}</td>
-                                <td>{user.userStatus.toString()}</td>
-                                <td>Action</td>
-                            </tr>
-                        ))
-                    }
+                    {users.map((user, index) => (
+                        <tr key={user.id}>
+                            <td scope={"row"}>{index + 1}</td>
+                            <td>{user.name}</td>
+                            <td>{user.email}</td>
+                            <td>{user.userType.toString()}</td>
+                            <td>{user.userStatus.toString()}</td>
+                            <td>
+                                <Button variant="success" onClick={() => handleEditClick(user)} className="me-2">
+                                    Edit
+                                </Button>
+                                <Button variant="danger" onClick={() => handleDeleteClick(user.id)}>
+                                    Delete
+                                </Button>
+                            </td>
+                        </tr>
+                    ))}
                     </tbody>
                 </Table>
             </div>
 
-
+            {showEditModal && selectedUser && (
+                <EditUser
+                    user={selectedUser}
+                    onHide={() => setShowEditModal(false)}
+                    onUpdate={() => {
+                        setShowEditModal(false);
+                        loadUsers(); // Reload users after editing
+                    }}
+                />
+            )}
         </div>
     );
 }
