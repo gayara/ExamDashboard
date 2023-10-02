@@ -1,11 +1,11 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import InputText from "../../../components/InputText";
 
 function AddUser(props) {
-    const [show, setShow] = useState(false);
+    const [show, setShow] = useState(true);
     const handleClose = () => setShow(false);
     const handleShow = () => {
         setShow(true);
@@ -14,6 +14,7 @@ function AddUser(props) {
     const [validated, setValidated] = useState(false);
 
     const handleSubmit = (event) => {
+        checkPassword();
         const form = event.currentTarget;
         if (form.checkValidity() === false) {
             event.preventDefault();
@@ -25,6 +26,29 @@ function AddUser(props) {
     const clearVal = ()=>{
         setValidated(false);
     }
+    function checkPassword() {
+        var input = document.getElementById('txt-cpw');
+        if (input.value != document.getElementById('txt-pw').value) {
+            input.setCustomValidity('Password Must be Matching.');
+            setValidated(false);
+        } else {
+            input.setCustomValidity('');
+            setValidated(true);
+        }
+    }
+    var name = "";
+    useEffect(()=>{
+      let title = document.getElementById("add-title");
+      title = `Register Admin User : ${name}`
+    },[name]);
+
+    const changeName = (e) =>{
+       let namet = e.target.value;
+       if(namet.value().trim !== ""){
+           name=namet;
+       }
+    }
+
     return (
         <div>
             {/*Create admin user button*/}
@@ -38,21 +62,22 @@ function AddUser(props) {
                 <Modal show={show} onHide={handleClose} animation={false} centered={true}>
                     <Form noValidate validated={validated} onSubmit={handleSubmit}>
                         <Modal.Header closeButton>
-                            <Modal.Title>Register Admin User</Modal.Title>
+                            <Modal.Title id={"add-title"}>Register Admin User</Modal.Title>
                         </Modal.Header>
                         <Modal.Body>
-                            <div className={"row"}>
-                                <InputText
-                                    label={"Name"}
-                                    id={"txt-name"}
-                                    type={"text"}
-                                    name={"txt-name"}
+                            <Form.Group controlId={"validation1"}>
+                                <Form.Label htmlFor="txt-name">Name</Form.Label>
+                                <Form.Control
+                                    type="text"
+                                    id="txt-name"
+                                    name="txt-name"
                                     placeholder={"Name"}
                                     required={true}
-                                    pattern={"^[A-Za-z]&"}
-                                    colSize={"col-6"} />
-                            </div>
-
+                                    pattern="^[a-z ,.'-]+$"
+                                    // onBlur=
+                                /><Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+                                <Form.Control.Feedback type={"invalid"}>Provide a valid name.</Form.Control.Feedback>
+                            </Form.Group>
                             <Form.Group controlId={"validation2"}>
                             <Form.Label htmlFor="txt-email">E-Mail</Form.Label>
                             <Form.Control
@@ -61,6 +86,7 @@ function AddUser(props) {
                                 name="txt-email"
                                 placeholder={"abc@email.com"}
                                 required={true}
+                                pattern={"^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$"}
                             /><Form.Control.Feedback>Looks good!</Form.Control.Feedback>
                             <Form.Control.Feedback type={"invalid"}>Provide an valid e-mail.</Form.Control.Feedback>
                         </Form.Group> <Form.Group controlId={"validation3"}>
@@ -73,7 +99,9 @@ function AddUser(props) {
                                 placeholder={"Password"}
                                 required
                                 minLength={8}
-                            /><Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+                                pattern="^[A-Za-z0-9]{8,20}$"
+                            /><Form.Control.Feedback type={"invalid"}>Enter a Password between 8-20 characters using letters and numbers.</Form.Control.Feedback>
+                            <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
                             <Form.Text id="passwordHelpBlock" muted>
                                 Enter at least 8 characters.
                             </Form.Text>
@@ -86,7 +114,8 @@ function AddUser(props) {
                                 placeholder={"Confirm Password"}
                                 required
                                 minLength={8}
-                            /><Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+                            />
+                            {/*<Form.Control.Feedback>Looks good!</Form.Control.Feedback>*/}
                             <Form.Control.Feedback type={"invalid"}>Entered password doesn't match..</Form.Control.Feedback>
                         </Form.Group>
                         </Modal.Body>

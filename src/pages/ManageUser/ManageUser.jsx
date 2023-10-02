@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import Dropdown from "react-bootstrap/Dropdown";
 import Button from "react-bootstrap/Button";
 import Table from "react-bootstrap/Table";
@@ -6,8 +6,21 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./ManageUserStyle.css"
 import AddUser from "./components/AddUser";
 import EditUser from "./components/EditUser";
+import AddUser2 from "./components/AddUser2";
+import axios from "axios";
 function ManageUser(props) {
 
+    const [users,setUsers]=useState([])
+
+    useEffect(()=>{
+        loadUsers();
+    });
+
+    const loadUsers=async ()=>{
+        const result=await axios.get("http://localhost:8080/api/user")
+        setUsers(result.data);
+        //console.log(result.data);
+    }
 
     return (
         <div>
@@ -36,225 +49,37 @@ function ManageUser(props) {
                 </Dropdown.Toggle>
 
                 <Dropdown.Menu>
-                    <Dropdown.Item href="#/action-1">Admin</Dropdown.Item>
-                    <Dropdown.Item href="#/action-2">Student</Dropdown.Item>
+                    <Dropdown.Item href="#/type/0">Admin</Dropdown.Item>
+                    <Dropdown.Item href="#/type/1">Student</Dropdown.Item>
                 </Dropdown.Menu>
             </Dropdown>
 
-            <div className={"me-3"} id={"table-div"}>
+            <div className={"me-3 ms-3"} id={"table-div"}>
                 {/*Users Table*/}
                 <Table id={"tbl-mng-user"} striped bordered hover>
                     <thead id={"mng-user-thead"}>
                     <tr>
-                        <th>#</th>
-                        <th>Name</th>
-                        <th>E-mail</th>
-                        <th>Status</th>
-                        <th>Action</th>
+                        <th scope={"col"}>#</th>
+                        <th scope={"col"}>Name</th>
+                        <th scope={"col"}>E-mail</th>
+                        <th scope={"col"}>Type</th>
+                        <th scope={"col"}>Status</th>
+                        <th scope={"col"}>Action</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Peheliya</td>
-                        <td>peheliya@gmail.com</td>
-                        <td>ACTIVE</td>
-                        <td>
-                            <EditUser></EditUser>
-                            <Button className={"btn-danger"}>Delete</Button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Peheliya</td>
-                        <td>peheliya@gmail.com</td>
-                        <td>ACTIVE</td>
-                        <td>
-                            <Button className={"btn-success"}>Edit</Button>
-                            <Button className={"btn-danger"}>Delete</Button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>Peheliya</td>
-                        <td>peheliya@gmail.com</td>
-                        <td>ACTIVE</td>
-                        <td>
-                            <Button className={"btn-success"}>Edit</Button>
-                            <Button className={"btn-danger"}>Delete</Button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>Peheliya</td>
-                        <td>peheliya@gmail.com</td>
-                        <td>ACTIVE</td>
-                        <td>
-                            <Button className={"btn-success"}>Edit</Button>
-                            <Button className={"btn-danger"}>Delete</Button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>Peheliya</td>
-                        <td>peheliya@gmail.com</td>
-                        <td>ACTIVE</td>
-                        <td>
-                            <Button className={"btn-success"}>Edit</Button>
-                            <Button className={"btn-danger"}>Delete</Button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>Peheliya</td>
-                        <td>peheliya@gmail.com</td>
-                        <td>ACTIVE</td>
-                        <td>
-                            <Button className={"btn-success"}>Edit</Button>
-                            <Button className={"btn-danger"}>Delete</Button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>Peheliya</td>
-                        <td>peheliya@gmail.com</td>
-                        <td>ACTIVE</td>
-                        <td>
-                            <Button className={"btn-success"}>Edit</Button>
-                            <Button className={"btn-danger"}>Delete</Button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>Peheliya</td>
-                        <td>peheliya@gmail.com</td>
-                        <td>ACTIVE</td>
-                        <td>
-                            <Button className={"btn-success"}>Edit</Button>
-                            <Button className={"btn-danger"}>Delete</Button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>Peheliya</td>
-                        <td>peheliya@gmail.com</td>
-                        <td>ACTIVE</td>
-                        <td>
-                            <Button className={"btn-success"}>Edit</Button>
-                            <Button className={"btn-danger"}>Delete</Button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>Peheliya</td>
-                        <td>peheliya@gmail.com</td>
-                        <td>ACTIVE</td>
-                        <td>
-                            <Button className={"btn-success"}>Edit</Button>
-                            <Button className={"btn-danger"}>Delete</Button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>Peheliya</td>
-                        <td>peheliya@gmail.com</td>
-                        <td>ACTIVE</td>
-                        <td>
-                            <Button className={"btn-success"}>Edit</Button>
-                            <Button className={"btn-danger"}>Delete</Button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>Peheliya</td>
-                        <td>peheliya@gmail.com</td>
-                        <td>ACTIVE</td>
-                        <td>
-                            <Button className={"btn-success"}>Edit</Button>
-                            <Button className={"btn-danger"}>Delete</Button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>Peheliya</td>
-                        <td>peheliya@gmail.com</td>
-                        <td>ACTIVE</td>
-                        <td>
-                            <Button className={"btn-success"}>Edit</Button>
-                            <Button className={"btn-danger"}>Delete</Button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>Peheliya</td>
-                        <td>peheliya@gmail.com</td>
-                        <td>ACTIVE</td>
-                        <td>
-                            <Button className={"btn-success"}>Edit</Button>
-                            <Button className={"btn-danger"}>Delete</Button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>Peheliya</td>
-                        <td>peheliya@gmail.com</td>
-                        <td>ACTIVE</td>
-                        <td>
-                            <Button className={"btn-success"}>Edit</Button>
-                            <Button className={"btn-danger"}>Delete</Button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>Peheliya</td>
-                        <td>peheliya@gmail.com</td>
-                        <td>ACTIVE</td>
-                        <td>
-                            <Button className={"btn-success"}>Edit</Button>
-                            <Button className={"btn-danger"}>Delete</Button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>Peheliya</td>
-                        <td>peheliya@gmail.com</td>
-                        <td>ACTIVE</td>
-                        <td>
-                            <Button className={"btn-success"}>Edit</Button>
-                            <Button className={"btn-danger"}>Delete</Button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>Peheliya</td>
-                        <td>peheliya@gmail.com</td>
-                        <td>ACTIVE</td>
-                        <td>
-                            <Button className={"btn-success"}>Edit</Button>
-                            <Button className={"btn-danger"}>Delete</Button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>Peheliya</td>
-                        <td>peheliya@gmail.com</td>
-                        <td>ACTIVE</td>
-                        <td>
-                            <Button className={"btn-success"}>Edit</Button>
-                            <Button className={"btn-danger"}>Delete</Button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>Peheliya</td>
-                        <td>peheliya@gmail.com</td>
-                        <td>ACTIVE</td>
-                        <td>
-                            <Button className={"btn-success"}>Edit</Button>
-                            <Button className={"btn-danger"}>Delete</Button>
-                        </td>
-                    </tr>
-
+                    {
+                        users.map((user,index)=>(
+                            <tr>
+                                <td scope={"row"} key={index}>{index+1}</td>
+                                <td>{user.name}</td>
+                                <td>{user.email}</td>
+                                <td>{user.userType.toString()}</td>
+                                <td>{user.userStatus.toString()}</td>
+                                <td>Action</td>
+                            </tr>
+                        ))
+                    }
                     </tbody>
                 </Table>
             </div>

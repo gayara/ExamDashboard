@@ -177,14 +177,13 @@ function CreateMcq(props) {
                                         </tr>
                                     </thead>
                                     <tbody id={"c-mcq-tbody"}>
-                                        <tr>
-                                            <td>1</td>
-                                            <td><input type={"text"} id={"txt-answer"}/></td>
-                                            <td><input type={"file"} id={"file-image"}/><EditMCQModal></EditMCQModal></td>
-                                            <td><input type={"checkbox"} id={"isCorrect"}/></td>
-                                            <td><Button className={"btn-danger"}>Delete</Button></td>
-                                        </tr>
+
                                     </tbody>
+                                    <tfoot className="c-mcq-tfoot">
+                                    <tr>
+                                        <td colSpan="5" id="table-foot-js"></td>
+                                    </tr>
+                                    </tfoot>
                                 </Table>
                             </div>
                     <div className={"row"}>
@@ -196,6 +195,7 @@ function CreateMcq(props) {
                 </Form>
             </div>
             <script src={"CreateMcq.js"}></script>
+            <script src={"components/AddAnswerJS.js"}></script>
         </div>
     );
 }

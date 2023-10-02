@@ -13,7 +13,7 @@ function InputText(props) {
         setFocused(true)
     };
     return (
-        <div className='inputText'>
+        <div>
             <label>{label}</label>
             <input {...inputProps} onChange={onChange} required onBlur={handleFocus} onFocus={() =>inputProps.name ==="confirmPassword" && setFocused(true)} focused={focused.toString()}/>
             <span>{errorMessege}</span>

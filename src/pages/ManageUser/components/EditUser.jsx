@@ -39,24 +39,30 @@ function EditUser(props) {
                             <Modal.Title>Edit Admin User</Modal.Title>
                         </Modal.Header>
                         <Modal.Body>
-                            <Form.Group controlId={"validation5"}>
+                            <Form.Group controlId={"validation6"}>
                                 <Form.Label htmlFor="e-txt-name">Name</Form.Label>
                                 <Form.Control
                                     type="text"
                                     id="e-txt-name"
+                                    name="e-txt-name"
                                     placeholder={"Name"}
-                                    required
+                                    required={true}
+                                    pattern="^[a-z ,.'-]+$"
                                 /><Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-                            </Form.Group> <Form.Group controlId={"validation6"}>
-                            <Form.Label htmlFor="e-txt-email">E-Mail</Form.Label>
-                            <Form.Control
-                                type="email"
-                                id="e-txt-email"
-                                placeholder={"abc@email.com"}
-                                required
-                            /><Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-                            <Form.Control.Feedback type={"invalid"}>Provide an valid e-mail.</Form.Control.Feedback>
-                        </Form.Group>
+                                <Form.Control.Feedback type={"invalid"}>Provide a valid name.</Form.Control.Feedback>
+                            </Form.Group>
+                            <Form.Group controlId={"validation7"}>
+                                <Form.Label htmlFor="e-txt-email">E-Mail</Form.Label>
+                                <Form.Control
+                                    type="email"
+                                    id="e-txt-email"
+                                    name="e-txt-email"
+                                    placeholder={"abc@email.com"}
+                                    required={true}
+                                    pattern={"^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$"}
+                                /><Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+                                <Form.Control.Feedback type={"invalid"}>Provide an valid e-mail.</Form.Control.Feedback>
+                            </Form.Group>
                         </Modal.Body>
                         <Modal.Footer>
                             <ResetPassword></ResetPassword>

@@ -4,29 +4,30 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 import ToggleButton from "react-bootstrap/ToggleButton";
+import {ToggleButtonGroup} from "react-bootstrap";
 
 function AddAnswer(props) {
-    const [validated, setValidated] = useState(false);
+    const [validatedadd, setValidatedadd] = useState(false);
 
-    const [show, setShow] = useState(true);
-    const handleClose = () => setShow(false)
+    const [showadd, setShowadd] = useState(false);
+    const handleClose = () => setShowadd(false)
 
     const [image, setImage] = useState(noImage);
-    const handleSubmit = (event) => {
+    const handleSubmitadd = (event) => {
         const form = event.currentTarget;
         if (form.checkValidity() === false) {
             event.preventDefault();
             event.stopPropagation();
         }
-        setValidated(true);
+        setValidatedadd(true);
     };
     const clearVal = ()=>{
-        setValidated(false);
+        setValidatedadd(false);
         setRadioValue(false);
     }
     const handleShow = () => {
         clearVal();
-        setShow(true);
+        setShowadd(true);
     }
 
     const onImageChange = (event) => {
@@ -40,6 +41,11 @@ function AddAnswer(props) {
         { name: 'No', value: 'false' },
         { name: 'Yes', value: 'true' },
     ];
+
+    let Answer = [];// initialize a user array
+    const AnswerProperties=['texti','typei','isCorrect','imageUrl'];// input fileds
+
+
     return (
         <div>
             <Button variant="primary" onClick={handleShow} className={"me-3"}>
@@ -48,8 +54,8 @@ function AddAnswer(props) {
 
             <>
 
-                <Modal show={show} onHide={handleClose} animation={false} centered={true}>
-                    <Form noValidate validated={validated} onSubmit={handleSubmit}>
+                <Modal show={showadd} onHide={handleClose} animation={false} centered={true}>
+                    <Form noValidate validated={validatedadd} onSubmit={handleSubmitadd} id={"addAnswerForm"}>
                         <Modal.Header closeButton>
                             <Modal.Title>Add an Answer</Modal.Title>
                         </Modal.Header>
@@ -87,21 +93,29 @@ function AddAnswer(props) {
                                 </div>
                                 <div className={"col-6"}><br/>
                                     <div className={"float-right"}>
-                                        {radios.map((radio, idx) => (
-                                            <ToggleButton
-                                                className={""}
-                                                key={idx}
-                                                id={`radio-${idx}`}
-                                                type="radio"
-                                                variant={idx % 2 ? 'outline-success' : 'outline-danger'}
-                                                name="radio"
-                                                value={radio.value}
-                                                checked={radioValue === radio.value}
-                                                onChange={(e) => setRadioValue(e.currentTarget.value)}
-                                            >
-                                                {radio.name}
+                                        {/*{radios.map((radio, idx) => (*/}
+                                        {/*    <ToggleButton*/}
+                                        {/*        className={""}*/}
+                                        {/*        key={idx}*/}
+                                        {/*        id={`radio-${idx}`}*/}
+                                        {/*        type="radio"*/}
+                                        {/*        variant={idx % 2 ? 'outline-success' : 'outline-danger'}*/}
+                                        {/*        name="radio"*/}
+                                        {/*        value={radio.value}*/}
+                                        {/*        checked={radioValue === radio.value}*/}
+                                        {/*        onChange={(e) => setRadioValue(e.currentTarget.value)}*/}
+                                        {/*    >*/}
+                                        {/*        {radio.name}*/}
+                                        {/*    </ToggleButton>*/}
+                                        {/*))}*/}
+                                        <ToggleButtonGroup type="radio" name="options" >
+                                            <ToggleButton id="tbg-radio-1" value={true} variant={"outline-success"}>
+                                               Yes
                                             </ToggleButton>
-                                        ))}
+                                            <ToggleButton id="tbg-radio-2" value={false} variant={"outline-danger"}>
+                                                No
+                                            </ToggleButton>
+                                        </ToggleButtonGroup>
                                         </div>
                                 </div>
                             </div>
@@ -137,7 +151,9 @@ function AddAnswer(props) {
                     </Form>
                 </Modal>
             </>
-
+            {/*<script src={"AddAnswerJS.js"}>*/}
+            {/*    */}
+            {/*</script>*/}
         </div>
     );
 }

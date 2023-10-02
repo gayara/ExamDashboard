@@ -2,17 +2,19 @@ import React, {useState} from 'react';
 import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import EditUser from "./EditUser";
 
 function ResetPassword(props) {
-    const [show, setShow] = useState(false);
-    const handleClose = () => setShow(false);
+    const [show3, setShow3] = useState(false);
+    const handleClose = () => setShow3(false);
     const handleShow = () => {
-        setShow(true);
+        setShow3(true);
         clearVal();
     }
     const [validated, setValidated] = useState(false);
 
     const handleSubmit = (event) => {
+        checkPassword();
         const form = event.currentTarget;
         if (form.checkValidity() === false) {
             event.preventDefault();
@@ -24,6 +26,16 @@ function ResetPassword(props) {
     const clearVal = ()=>{
         setValidated(false);
     }
+    function checkPassword() {
+        var input = document.getElementById('r-txt-cpw');
+        if (input.value != document.getElementById('r-txt-pw').value) {
+            input.setCustomValidity('Password Must be Matching.');
+            setValidated(false);
+        } else {
+            input.setCustomValidity('');
+            setValidated(true);
+        }
+    }
     return (
         <div>
             <Button variant="primary" onClick={handleShow} className={"me-3"}>
@@ -32,36 +44,39 @@ function ResetPassword(props) {
             {/*reset pw*/}
             <>
 
-                <Modal show={show} onHide={handleClose} animation={false} backdrop={false}>
+                <Modal show={show3} onHide={handleClose} animation={false} backdrop={false}>
                     <Form noValidate validated={validated} onSubmit={handleSubmit}>
                         <Modal.Header closeButton>
                             <Modal.Title>Reset Password</Modal.Title>
                         </Modal.Header>
                         <Modal.Body>
-                            <Form.Group controlId={"validation7"}>
-                                <Form.Label htmlFor="e-txt-pw">New Password</Form.Label>
+                            <Form.Group controlId={"validation8"}>
+                                <Form.Label htmlFor="r-txt-pw">Password</Form.Label>
                                 <Form.Control
                                     type="password"
-                                    id="e-txt-pw"
-                                    name={"e-password"}
+                                    id="r-txt-pw"
+                                    name={"r-password"}
                                     aria-describedby="passwordHelpBlock"
-                                    placeholder={"New Password"}
+                                    placeholder={"Password"}
                                     required
                                     minLength={8}
-                                /><Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+                                    pattern="^[A-Za-z0-9]{8,20}$"
+                                /><Form.Control.Feedback type={"invalid"}>Enter a Password between 8-20 characters using letters and numbers.</Form.Control.Feedback>
+                                <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
                                 <Form.Text id="passwordHelpBlock" muted>
                                     Enter at least 8 characters.
                                 </Form.Text>
-                            </Form.Group> <Form.Group controlId={"validation8"}>
-                            <Form.Label htmlFor="e-txt-cpw"> Confirm Password</Form.Label>
+                            </Form.Group> <Form.Group controlId={"validation9"}>
+                            <Form.Label htmlFor="r-txt-cpw"> Confirm Password</Form.Label>
                             <Form.Control
                                 type="password"
-                                id="e-txt-cpw"
-                                name={"e-cpassword"}
+                                id="r-txt-cpw"
+                                name={"r-cpassword"}
                                 placeholder={"Confirm Password"}
                                 required
                                 minLength={8}
-                            /><Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+                            />
+                            {/*<Form.Control.Feedback>Looks good!</Form.Control.Feedback>*/}
                             <Form.Control.Feedback type={"invalid"}>Entered password doesn't match..</Form.Control.Feedback>
                         </Form.Group>
                         </Modal.Body>
