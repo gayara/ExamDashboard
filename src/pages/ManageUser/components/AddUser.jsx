@@ -1,46 +1,46 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import axios from "axios";
-import {useNavigate} from "react-router-dom";
-function AddUser(props) {
 
-    let navigate = useNavigate();
+function AddUser({ onHide, showAdd, onAdd }) {
+    const [user, setUser] = useState({
+        name: "",
+        email: "",
+        password: "",
+        userType: 0,
+        userStatus: 1
+    });
 
-    const[user,setUser]= useState({
-        name:"",
-        email:"",
-        password:"",
-        userType:0,
-        userStatus:1
-    })
-    const{name,email,password,userType,userStatus}=user
+    const [validated, setValidated] = useState(false);
 
     const onInputChange = (e) => {
         const { name, value } = e.target;
-        console.log(`Updating ${name} with value: ${value}`);
         setUser({ ...user, [name]: value });
     };
 
-    const [show, setShow] = useState(true);
-    const handleClose = () => setShow(false);
-    const handleShow = () => {
-        setShow(true);
-        clearVal();
-    }
-    const [validated, setValidated] = useState(false);
-
-    const handleSubmit = (event) => {
-        event.preventDefault();
+    const handleSubmit = async (event) => {
         checkPassword();
+        event.preventDefault();
         const form = event.currentTarget;
         if (form.checkValidity() === false) {
             event.stopPropagation();
+        } else {
+            setValidated(true);
+            try {
+                await axios.post("http://localhost:8080/api/user", user);
+                alert('New user added successfully!');
+                clearForm();
+                onHide();
+                onAdd();
+            } catch (error) {
+                console.error('Error adding user:', error);
+            }
         }
-        setValidated(true);
     };
-    const clearVal = () => {
+
+    const clearForm = () => {
         setUser({
             name: "",
             email: "",
@@ -50,42 +50,24 @@ function AddUser(props) {
         });
         setValidated(false);
     };
+
     function checkPassword() {
         const input = document.getElementById('txt-cpw');
-        if (input.value != document.getElementById('txt-pw').value) {
-            input.setCustomValidity('Password Must be Matching.');
+        if (input.value !== document.getElementById('txt-pw').value) {
+            input.setCustomValidity('Password must match.');
             setValidated(false);
         } else {
             input.setCustomValidity('');
             setValidated(true);
         }
     }
-    // var name = "";
-    // useEffect(()=>{
-    //   let title = document.getElementById("add-title");
-    //   title = `Register Admin User : ${name}`
-    // },[name]);
-
-    // const changeName = (e) =>{
-    //    let namet = e.target.value;
-    //    if(namet.value().trim !== ""){
-    //        name=namet;
-    //    }
-    // }
-
-
 
     return (
         <div>
-            {/*Create admin user button*/}
-            <Button variant="primary" onClick={handleShow} className={"me-3 float-right"}>
-                Create Admin User
-            </Button>
-            <br/>
-            {/*Create admin user modal*/}
+
             <>
 
-                <Modal show={show} onHide={handleClose} animation={false} centered={true}>
+                <Modal show={showAdd} onHide={onHide} animation={false} centered={true}>
                     <Form noValidate validated={validated} onSubmit={handleSubmit}>
                         <Modal.Header closeButton>
                             <Modal.Title id={"add-title"}>Register Admin User</Modal.Title>
@@ -96,11 +78,11 @@ function AddUser(props) {
                                 <Form.Control
                                     type="text"
                                     id="txt-name"
-                                    name="txt-name"
+                                    name="name"
                                     placeholder={"Name"}
                                     required={true}
                                     pattern="^[a-z ,.'-]+$"
-                                    value={name}
+                                    value={user.name}
                                     onChange={(e)=>onInputChange(e)}
                                 /><Form.Control.Feedback>Looks good!</Form.Control.Feedback>
                                 <Form.Control.Feedback type={"invalid"}>Provide a valid name.</Form.Control.Feedback>
@@ -110,11 +92,11 @@ function AddUser(props) {
                             <Form.Control
                                 type="email"
                                 id="txt-email"
-                                name="txt-email"
+                                name="email"
                                 placeholder={"abc@email.com"}
                                 required={true}
                                 pattern={"^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$"}
-                                value={email}
+                                value={user.email}
                                 onChange={(e)=>onInputChange(e)}
                             /><Form.Control.Feedback>Looks good!</Form.Control.Feedback>
                             <Form.Control.Feedback type={"invalid"}>Provide an valid e-mail.</Form.Control.Feedback>
@@ -129,7 +111,7 @@ function AddUser(props) {
                                 required
                                 minLength={8}
                                 pattern="^[A-Za-z0-9]{8,20}$"
-                                value={password}
+                                value={user.password}
                                 onChange={(e)=>onInputChange(e)}
                             /><Form.Control.Feedback type={"invalid"}>Enter a Password between 8-20 characters using letters and numbers.</Form.Control.Feedback>
                             <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
@@ -146,12 +128,14 @@ function AddUser(props) {
                                 required
                                 minLength={8}
                             />
-                            {/*<Form.Control.Feedback>Looks good!</Form.Control.Feedback>*/}
                             <Form.Control.Feedback type={"invalid"}>Entered password doesn't match..</Form.Control.Feedback>
                         </Form.Group>
                         </Modal.Body>
                         <Modal.Footer>
-                            <Button variant="secondary" type={"reset"} onClick={clearVal} >
+                            <Button variant="secondary" type={"reset"} onClick={() => {
+                                onHide();
+                                clearForm();
+                            }}>
                                 Clear
                             </Button>
                             <Button variant="primary" type={"submit"}>

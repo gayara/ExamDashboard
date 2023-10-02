@@ -1,17 +1,14 @@
-import React, { useEffect, useState } from 'react';
-import Dropdown from "react-bootstrap/Dropdown";
-import Button from "react-bootstrap/Button";
-import Table from "react-bootstrap/Table";
-import "bootstrap/dist/css/bootstrap.min.css";
-import "./ManageUserStyle.css";
-import AddUser from "./components/AddUser";
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import { Button, Dropdown, Table } from 'react-bootstrap';
 import EditUser from "./components/EditUser";
-import axios from "axios";
+import AddUser from "./components/AddUser";
 
-function ManageUser(props) {
+function ManageUser() {
     const [users, setUsers] = useState([]);
     const [selectedUser, setSelectedUser] = useState(null);
     const [showEditModal, setShowEditModal] = useState(false);
+    const [showAddModal, setShowAddModal] = useState(false);
 
     useEffect(() => {
         loadUsers();
@@ -19,12 +16,32 @@ function ManageUser(props) {
 
     const loadUsers = async () => {
         try {
-            const result = await axios.get("http://localhost:8080/api/user");
+            const result = await axios.get('http://localhost:8080/api/user');
+            setUsers(result.data);
+        } catch (error) {
+            console.error('Error fetching user data:', error);
+        }
+    };
+
+    const loadAdminUsers = async () => {
+        try {
+            const result = await axios.get("http://localhost:8080/api/user/type/0");
+            setUsers(result.data);
+            console.log(result.data);
+        } catch (error) {
+            console.error("Error fetching user data:", error);
+        }
+    };
+
+    const loadStudentUsers = async () => {
+        try {
+            const result = await axios.get("http://localhost:8080/api/user/type/1");
             setUsers(result.data);
         } catch (error) {
             console.error("Error fetching user data:", error);
         }
     };
+
 
     const handleEditClick = (user) => {
         setSelectedUser(user);
@@ -32,8 +49,21 @@ function ManageUser(props) {
     };
 
     const handleDeleteClick = (userId) => {
-        // Implement logic to handle delete operation for the user with userId
-        console.log(`Delete user with ID: ${userId}`);
+        const isConfirmed = window.confirm("Are you sure you want to delete this user?");
+        if (isConfirmed) {
+            axios.delete(`http://localhost:8080/api/user/${userId}`)
+                .then(() => {
+                    alert("User deleted successfully!");
+                    loadUsers();
+                    console.log(`Delete user with ID: ${userId}`);
+                })
+                .catch((error) => {
+                    console.error("Error deleting user:", error);
+                    alert("Error deleting user. Please try again later.");
+                });
+        } else {
+            console.log("User deletion canceled.");
+        }
     };
 
     return (
@@ -54,8 +84,16 @@ function ManageUser(props) {
                 </div>
             </section>
 
+            {/*Add admin user*/}
+            {showAddModal && (
+            <AddUser showAdd={showAddModal}
+                     onHide={() => setShowAddModal(false)}
+                     onUpdate={() => {
+                         setShowAddModal(false);
+                         loadUsers(); // Reload users after editing
+                     }}/>)}
 
-            <AddUser></AddUser>
+
             {/* User Type Dropdown*/}
             <Dropdown className={"mb-3"}>
                 <Dropdown.Toggle className={"ms-3"} variant="primary" id="dropdown-user-type">
@@ -63,13 +101,24 @@ function ManageUser(props) {
                 </Dropdown.Toggle>
 
                 <Dropdown.Menu>
-                    <Dropdown.Item href="#/type/0">Admin</Dropdown.Item>
-                    <Dropdown.Item href="#/type/1">Student</Dropdown.Item>
+                    <Dropdown.Item href="#/type/0" onClick={loadUsers}>All</Dropdown.Item>
+                    <Dropdown.Item href="#/type/0" onClick={loadAdminUsers}>Admin</Dropdown.Item>
+                    <Dropdown.Item href="#/type/1" onClick={loadStudentUsers}>Student</Dropdown.Item>
                 </Dropdown.Menu>
             </Dropdown>
 
             <div className={"me-3 ms-3"} id={"table-div"}>
                 <Table id={"tbl-mng-user"} striped bordered hover>
+                    <thead id={"mng-user-thead"}>
+                    <tr>
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>E-mail</th>
+                        <th>User Type</th>
+                        <th>User Status</th>
+                        <th>Action</th>
+                    </tr>
+                    </thead>
                     <tbody>
                     {users.map((user, index) => (
                         <tr key={user.id}>
@@ -95,6 +144,7 @@ function ManageUser(props) {
             {showEditModal && selectedUser && (
                 <EditUser
                     user={selectedUser}
+                    show={showEditModal}
                     onHide={() => setShowEditModal(false)}
                     onUpdate={() => {
                         setShowEditModal(false);

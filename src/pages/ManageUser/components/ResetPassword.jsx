@@ -3,9 +3,12 @@ import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import EditUser from "./EditUser";
+import axios from "axios";
 
 function ResetPassword(props) {
     const [show3, setShow3] = useState(false);
+    const { user, onHide, show, onUpdate } = props;
+    const [userData, setUserData] = useState({ ...user });
     const handleClose = () => setShow3(false);
     const handleShow = () => {
         setShow3(true);
@@ -13,12 +16,25 @@ function ResetPassword(props) {
     }
     const [validated, setValidated] = useState(false);
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         checkPassword();
         const form = event.currentTarget;
         if (form.checkValidity() === false) {
             event.preventDefault();
             event.stopPropagation();
+
+            try {
+                // Make a PUT request with user data
+                console.log(userData);
+                const response = await axios.put(`http://localhost:8080/api/user`, userData);
+                // Assuming the response data matches the format you provided
+                onUpdate(response.data); // Notify parent component about the update with the updated user data
+                onHide(); // Close the modal after successful update
+                alert('User data updated successfully!');
+            } catch (error) {
+                console.error('Error updating user:', error);
+                // Handle error as needed (show error message, etc.)
+            }
         }
 
         setValidated(true);
