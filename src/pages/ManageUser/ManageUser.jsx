@@ -3,6 +3,8 @@ import axios from 'axios';
 import { Button, Dropdown, Table } from 'react-bootstrap';
 import EditUser from "./components/EditUser";
 import AddUser from "./components/AddUser";
+import "./ManageUserStyle.css";
+import Modal from "react-bootstrap/Modal";
 
 function ManageUser() {
     const [users, setUsers] = useState([]);
@@ -48,23 +50,30 @@ function ManageUser() {
         setShowEditModal(true);
     };
 
-    const handleDeleteClick = (userId) => {
-        const isConfirmed = window.confirm("Are you sure you want to delete this user?");
+    const handleDeleteClick = (userId,userName) => {
+        const isConfirmed = window.confirm(`Are you sure you want to delete user "${userName}" ?`);
         if (isConfirmed) {
             axios.delete(`http://localhost:8080/api/user/${userId}`)
                 .then(() => {
-                    alert("User deleted successfully!");
+                    alert("User "+userName+" deleted successfully!");
                     loadUsers();
                     console.log(`Delete user with ID: ${userId}`);
                 })
                 .catch((error) => {
                     console.error("Error deleting user:", error);
-                    alert("Error deleting user. Please try again later.");
+                    alert("Error deleting user "+userName+". Please try again later.");
                 });
         } else {
             console.log("User deletion canceled.");
         }
     };
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => {
+        setShow(false);
+        loadUsers();
+    }
+    const handleShow = () => setShow(true);
 
     return (
         <div>
@@ -84,28 +93,29 @@ function ManageUser() {
                 </div>
             </section>
 
-            {/*Add admin user*/}
-            {showAddModal && (
-            <AddUser showAdd={showAddModal}
-                     onHide={() => setShowAddModal(false)}
-                     onUpdate={() => {
-                         setShowAddModal(false);
-                         loadUsers(); // Reload users after editing
-                     }}/>)}
+            <div className={"row"}>
+                <div className={"col-6"}>
+                    {/* User Type Dropdown*/}
+                    <Dropdown className={"mb-2"}>
+                        <Dropdown.Toggle className={"ms-3"} variant="primary" id="dropdown-user-type">
+                            User Type
+                        </Dropdown.Toggle>
 
+                        <Dropdown.Menu>
+                            <Dropdown.Item href="#/type/0" onClick={loadUsers}>All</Dropdown.Item>
+                            <Dropdown.Item href="#/type/0" onClick={loadAdminUsers}>Admin</Dropdown.Item>
+                            <Dropdown.Item href="#/type/1" onClick={loadStudentUsers}>Student</Dropdown.Item>
+                        </Dropdown.Menu>
+                    </Dropdown>
+                </div>
+                <div className={"col-6"}>
+                    {/*Add admin user*/}
+                    <Button variant="primary float-right me-3" onClick={handleShow}>
+                        Add Admin User
+                    </Button>
+                </div>
 
-            {/* User Type Dropdown*/}
-            <Dropdown className={"mb-3"}>
-                <Dropdown.Toggle className={"ms-3"} variant="primary" id="dropdown-user-type">
-                    User Type
-                </Dropdown.Toggle>
-
-                <Dropdown.Menu>
-                    <Dropdown.Item href="#/type/0" onClick={loadUsers}>All</Dropdown.Item>
-                    <Dropdown.Item href="#/type/0" onClick={loadAdminUsers}>Admin</Dropdown.Item>
-                    <Dropdown.Item href="#/type/1" onClick={loadStudentUsers}>Student</Dropdown.Item>
-                </Dropdown.Menu>
-            </Dropdown>
+            </div>
 
             <div className={"me-3 ms-3"} id={"table-div"}>
                 <Table id={"tbl-mng-user"} striped bordered hover>
@@ -128,10 +138,10 @@ function ManageUser() {
                             <td>{user.userType.toString()}</td>
                             <td>{user.userStatus.toString()}</td>
                             <td>
-                                <Button variant="success" onClick={() => handleEditClick(user)} className="me-2">
+                                <Button variant="success" onClick={() => handleEditClick(user)} className="me-2 float-end">
                                     Edit
                                 </Button>
-                                <Button variant="danger" onClick={() => handleDeleteClick(user.id)}>
+                                <Button variant="danger" onClick={() => handleDeleteClick(user.id,user.name)} className="me-2 float-end">
                                     Delete
                                 </Button>
                             </td>
@@ -152,6 +162,14 @@ function ManageUser() {
                     }}
                 />
             )}
+            <Modal show={show} onHide={handleClose}>
+                <Modal.Header closeButton>
+                    <Modal.Title>Register Admin User</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <AddUser onHide={handleClose}/>
+                </Modal.Body>
+            </Modal>
         </div>
     );
 }

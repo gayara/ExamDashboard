@@ -20,15 +20,13 @@ function EditUser(props) {
 
     const handleSave = async () => {
         try {
-            // Make a PUT request with user data
             console.log(userData);
             const response = await axios.put(`http://localhost:8080/api/user`, userData);
-            // Assuming the response data matches the format you provided
             onUpdate(response.data); // Notify parent component about the update with the updated user data
             onHide(); // Close the modal after successful update
-            alert('User data updated successfully!');
+            alert(user.name+"'s data updated successfully!");
         } catch (error) {
-            console.error('Error updating user:', error);
+            console.error('Error updating user: '+user.name, error);
         }
     };
 
@@ -48,7 +46,7 @@ function EditUser(props) {
                             value={userData.name} // Update this line to use userData instead of user
                             onChange={handleInputChange}
                             required
-                            pattern="^[a-z ,.'-]+$"
+                            pattern="(^[a-zA-Z][a-zA-Z\s]{0,20}[a-zA-Z]$)"
                         />
                         <Form.Control.Feedback type="invalid">Provide a valid name.</Form.Control.Feedback>
                     </Form.Group>

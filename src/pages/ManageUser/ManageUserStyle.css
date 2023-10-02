@@ -7,10 +7,11 @@
     table-layout: fixed;
     overflow-y: auto;
     overflow-x: auto;
+    text-align: center;
 }
 
 #table-div{
-    max-height: 60vh;
+    max-height: 75vh;
     overflow-y: scroll;
 }
 
