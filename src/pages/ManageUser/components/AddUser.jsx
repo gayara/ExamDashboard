@@ -20,7 +20,7 @@ function AddUser({onHide}) {
         setUser({...user, [name]: value});
     };
 
-    const handleSubmit = async (event) => {// when submit
+    const handleSubmit = (event) => {// when submit
         checkPassword();
         event.preventDefault();
         const form = event.currentTarget;
@@ -28,14 +28,16 @@ function AddUser({onHide}) {
             event.stopPropagation();
         } else {
             setValidated(true);
-            try {
-                await axios.post("http://localhost:8080/api/user", user);//saving user
+            axios.post("http://localhost:8080/api/user", user)
+            .then((response)=>{
                 alert('New user "'+user.name+'" added successfully!');
                 clearForm();
                 onHide();//hides modal after user data is saved
-            } catch (error) {
-                console.error('Error adding user: '+user.name, error);
-            }
+             }).catch((reason)=>{
+                console.error('Error adding user: '+user.name, reason);
+             }).finally(()=>{
+                //to do something while operetion is completed.
+             })//saving user
         }
     };
 

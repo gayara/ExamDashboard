@@ -8,7 +8,7 @@ import axios from 'axios';
 function EditUser(props) {
     const [showResetModal, setShowResetModal] = useState(false);
     const { user, onHide, show, onUpdate } = props;
-    const [userData, setUserData] = useState({ ...user });
+    const [userData, setUserData] = useState(user);
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
@@ -18,7 +18,7 @@ function EditUser(props) {
         }));
     };
 
-    const handleSave = async () => {
+    const handleSave = async () => {//change this
         try {
             console.log(userData);
             const response = await axios.put(`http://localhost:8080/api/user`, userData);
