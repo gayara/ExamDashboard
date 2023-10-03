@@ -31,7 +31,7 @@ function ManageUser() {
             setUsers(result.data);
             console.log(result.data);
         } catch (error) {
-            console.error("Error fetching user data:", error);
+            console.error("Error fetching admin user data:", error);
         }
     };
 
@@ -40,7 +40,7 @@ function ManageUser() {
             const result = await axios.get("http://localhost:8080/api/user/type/1");
             setUsers(result.data);
         } catch (error) {
-            console.error("Error fetching user data:", error);
+            console.error("Error fetching student user data:", error);
         }
     };
 
@@ -85,8 +85,8 @@ function ManageUser() {
                         </div>
                         <div className="col-sm-6">
                             <ol className="breadcrumb float-sm-right">
-                                <li className="breadcrumb-item"><a href="#">Home</a></li>
-                                <li className="breadcrumb-item active">Manage Users</li>
+                                <li className="breadcrumb-item"><a href="./dashboard">Home</a></li>
+                                <li className="breadcrumb-item active" id="breadcrumb-last">Manage Users</li>
                             </ol>
                         </div>
                     </div>
@@ -102,15 +102,15 @@ function ManageUser() {
                         </Dropdown.Toggle>
 
                         <Dropdown.Menu>
-                            <Dropdown.Item href="#/type/0" onClick={loadUsers}>All</Dropdown.Item>
-                            <Dropdown.Item href="#/type/0" onClick={loadAdminUsers}>Admin</Dropdown.Item>
-                            <Dropdown.Item href="#/type/1" onClick={loadStudentUsers}>Student</Dropdown.Item>
+                            <Dropdown.Item href="#/type/all" onClick={loadUsers}>All</Dropdown.Item>
+                            <Dropdown.Item href="#/type/admin" onClick={loadAdminUsers}>Admin</Dropdown.Item>
+                            <Dropdown.Item href="#/type/student" onClick={loadStudentUsers}>Student</Dropdown.Item>
                         </Dropdown.Menu>
                     </Dropdown>
                 </div>
                 <div className={"col-6"}>
                     {/*Add admin user*/}
-                    <Button variant="primary float-right me-3" onClick={handleShow}>
+                    <Button id="btn-add-user" variant="primary" onClick={handleShow} className="" >
                         Add Admin User
                     </Button>
                 </div>

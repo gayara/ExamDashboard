@@ -23,7 +23,7 @@ function EditUser(props) {
             console.log(userData);
             const response = await axios.put(`http://localhost:8080/api/user`, userData);
             onUpdate(response.data); // Notify parent component about the update with the updated user data
-            onHide(); // Close the modal after successful update
+            onHide(); // Close the modal after update
             alert(user.name+"'s data updated successfully!");
         } catch (error) {
             console.error('Error updating user: '+user.name, error);

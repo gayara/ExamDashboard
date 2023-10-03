@@ -15,12 +15,12 @@ function AddUser({onHide}) {
 
     const [validated, setValidated] = useState(false);
 
-    const onInputChange = (e) => {
+    const onInputChange = (e) => {// To load data to user obj
         const {name, value} = e.target;
         setUser({...user, [name]: value});
     };
 
-    const handleSubmit = async (event) => {
+    const handleSubmit = async (event) => {// when submit
         checkPassword();
         event.preventDefault();
         const form = event.currentTarget;
@@ -29,23 +29,23 @@ function AddUser({onHide}) {
         } else {
             setValidated(true);
             try {
-                await axios.post("http://localhost:8080/api/user", user);
+                await axios.post("http://localhost:8080/api/user", user);//saving user
                 alert('New user "'+user.name+'" added successfully!');
                 clearForm();
-                onHide();
+                onHide();//hides modal after user data is saved
             } catch (error) {
                 console.error('Error adding user: '+user.name, error);
             }
         }
     };
 
-    const clearForm = () => {
+    const clearForm = () => {//set data to defaulst values
         setUser({
             name: "",
             email: "",
             password: "",
-            userType: 0,
-            userStatus: 1
+            userType: 0,//this is type admin
+            userStatus: 1// by default user status is set to ACTIVE
         });
         setValidated(false);
     };
@@ -111,7 +111,8 @@ function AddUser({onHide}) {
                 <Form.Text id="passwordHelpBlock" muted>
                     Enter at least 8 characters.
                 </Form.Text>
-            </Form.Group> <Form.Group controlId={"validation4"}>
+                </Form.Group>
+                <Form.Group controlId={"validation4"}>
                 <Form.Label htmlFor="txt-cpw"> Confirm Password</Form.Label>
                 <Form.Control
                     type="password"
@@ -122,7 +123,7 @@ function AddUser({onHide}) {
                     minLength={8}
                 />
                 <Form.Control.Feedback type={"invalid"}>Entered password doesn't match..</Form.Control.Feedback>
-            </Form.Group>
+                </Form.Group>
                 <hr/>
                 <Button className={"float-right me-3"} variant="primary" type={"submit"}>
                     Submit

@@ -1,5 +1,6 @@
 #btn-add-user{
     float: right;
+    margin-right:45px;
 }
 
 #tbl-mng-user{
@@ -8,6 +9,51 @@
     overflow-y: auto;
     overflow-x: auto;
     text-align: center;
+    width: 100%;
+}
+
+th, td {
+    text-align: center;
+}
+
+th:nth-child(6),
+td:nth-child(6) {
+    width: 11%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+th:nth-child(5),
+td:nth-child(5) {
+    width: 15%;
+     white-space: nowrap;
+     overflow: hidden;
+     text-overflow: ellipsis;
+}
+
+th:nth-child(4),
+td:nth-child(4) {
+    width: 15%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+th:nth-child(2),
+td:nth-child(2) {
+    width: 15%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+th:first-child,
+td:first-child {
+    width: 6.5%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 #table-div{
@@ -16,6 +62,10 @@
 }
 
 #mng-user-thead{
-    top: 0;
+    top: -1px;
     position: sticky;
+}
+
+#breadcrumb-last{
+    margin-right: 30px;
 }
